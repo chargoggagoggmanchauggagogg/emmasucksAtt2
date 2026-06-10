@@ -4,26 +4,63 @@
   <meta charset="utf-8">
   <title>emmasucks | Network</title>
   <script src="https://tailwindcss.com"></script>
+  <!-- Cyber Glitch Style Injections -->
+  <style>
+    /* Neon Matrix Animations */
+    @keyframes matrix-pulse {
+      0%, 100% { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
+      50% { border-color: rgba(59, 130, 246, 0.7); box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); }
+    }
+    @keyframes text-glitch {
+      0% { text-shadow: 1px 1px 0px #10b981, -1px -1px 0px #3b82f6; }
+      50% { text-shadow: -1px 1px 0px #10b981, 1px -1px 0px #3b82f6; }
+      100% { text-shadow: 1px -1px 0px #10b981, -1px 1px 0px #3b82f6; }
+    }
+    /* CRT Scanline Filter Overlay effect */
+    .crt-layer::after {
+      content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 99999; background-size: 100% 4px, 6px 100%; pointer-events: none;
+    }
+    /* Glitch Container Borders */
+    .cyber-panel {
+      animation: matrix-pulse 4s infinite ease-in-out;
+      background: rgba(9, 9, 11, 0.95) !important;
+    }
+    .cyber-text {
+      animation: text-glitch 3s infinite linear;
+    }
+  </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center">
+<body class="bg-black text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center crt-layer">
 
   <div id="app-view" class="w-full h-screen flex items-center justify-center"></div>
 
   <script>
-    // Load the custom login overlay panels right away on start
+    // Loads the core structure and applies the cyber themes dynamically
     fetch('/login.html').then(res => res.text()).then(html => {
-      document.getElementById('app-view').innerHTML = html;
+      const view = document.getElementById('app-view');
+      view.innerHTML = html;
+      applyCyberStyles();
     });
 
-    // Custom login navigation handler event loop
+    function applyCyberStyles() {
+      // Find containers and force them into custom cyber matrix styles
+      const card = document.getElementById('auth-screen') || document.getElementById('main-dashboard');
+      if (card) card.classList.add('cyber-panel');
+
+      const title = document.getElementById('auth-title');
+      if (title) title.classList.add('cyber-text');
+    }
+
+    // Handles screen navigation on click
     function handleAuthSubmit(event) {
       event.preventDefault();
-      
-      // Swap out the login forms and render the green matrix lobbies grid
       fetch('/chat.html').then(res => res.text()).then(html => {
         const app = document.getElementById('app-view');
-        app.className = "w-full h-screen flex flex-col"; // Reset centering layout restrictions
+        app.className = "w-full h-screen flex flex-col"; // Reset centering rules
         app.innerHTML = html;
+        applyCyberStyles();
       });
     }
   </script>
