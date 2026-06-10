@@ -1,1 +1,31 @@
-<script>fetch('/app-blueprint').then(r=>r.text()).then(h=>document.write(h))</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>emmasucks | Network</title>
+  <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center">
+
+  <div id="app-view" class="w-full h-screen flex items-center justify-center"></div>
+
+  <script>
+    // Load the custom login overlay panels right away on start
+    fetch('/login.html').then(res => res.text()).then(html => {
+      document.getElementById('app-view').innerHTML = html;
+    });
+
+    // Custom login navigation handler event loop
+    function handleAuthSubmit(event) {
+      event.preventDefault();
+      
+      // Swap out the login forms and render the green matrix lobbies grid
+      fetch('/chat.html').then(res => res.text()).then(html => {
+        const app = document.getElementById('app-view');
+        app.className = "w-full h-screen flex flex-col"; // Reset centering layout restrictions
+        app.innerHTML = html;
+      });
+    }
+  </script>
+</body>
+</html>
