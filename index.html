@@ -4,65 +4,69 @@
   <meta charset="utf-8">
   <title>emmasucks | Network</title>
   <script src="https://tailwindcss.com"></script>
-  <!-- Cyber Glitch Style Injections -->
-  <style>
-    /* Neon Matrix Animations */
-    @keyframes matrix-pulse {
-      0%, 100% { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 0 15px rgba(16, 185, 129, 0.1); }
-      50% { border-color: rgba(59, 130, 246, 0.7); box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); }
-    }
-    @keyframes text-glitch {
-      0% { text-shadow: 1px 1px 0px #10b981, -1px -1px 0px #3b82f6; }
-      50% { text-shadow: -1px 1px 0px #10b981, 1px -1px 0px #3b82f6; }
-      100% { text-shadow: 1px -1px 0px #10b981, -1px 1px 0px #3b82f6; }
-    }
-    /* CRT Scanline Filter Overlay effect */
-    .crt-layer::after {
-      content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      z-index: 99999; background-size: 100% 4px, 6px 100%; pointer-events: none;
-    }
-    /* Glitch Container Borders */
-    .cyber-panel {
-      animation: matrix-pulse 4s infinite ease-in-out;
-      background: rgba(9, 9, 11, 0.95) !important;
-    }
-    .cyber-text {
-      animation: text-glitch 3s infinite linear;
-    }
-  </style>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>body{font-family:'Plus Jakarta Sans',sans-serif;background-color:#09090b;}</style>
 </head>
-<body class="bg-black text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center crt-layer">
+<body class="text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center">
 
-  <div id="app-view" class="w-full h-screen flex items-center justify-center"></div>
+  <div id="app-view" class="w-full h-screen flex flex-col items-center justify-center">
+    
+    <!-- LOGIN PANEL (MATCHES IMAGE LAYOUT) -->
+    <div id="login-interface" class="w-full max-w-md flex flex-col items-center space-y-6 mx-4">
+      <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/10">
+        <svg class="w-6 h-6 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+        </svg>
+      </div>
+      <div class="text-center space-y-1">
+        <h1 class="text-3xl font-bold tracking-tight text-white">Welcome back</h1>
+        <p class="text-sm text-zinc-400">Log in to your account</p>
+      </div>
+      <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
+        <button onclick="bypassAuth('GoogleUser')" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <div class="relative flex py-1 items-center"><div class="flex-grow border-t border-zinc-800/40"></div><span class="flex-shrink mx-4 text-xs font-semibold text-zinc-600 uppercase tracking-widest">or</span><div class="flex-grow border-t border-zinc-800/40"></div></div>
+        <form onsubmit="handleAuth(event)" class="space-y-4">
+          <div>
+            <label class="block text-sm font-semibold text-zinc-300 mb-2">Email or Username</label>
+            <input type="text" id="auth-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+          </div>
+          <div>
+            <div class="flex justify-between items-baseline mb-2"><label class="block text-sm font-semibold text-zinc-300">Password</label><button type="button" class="text-xs font-medium text-blue-400 hover:underline">Forgot password?</button></div>
+            <input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+          </div>
+          <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 transition py-3 rounded-xl text-sm font-bold text-white tracking-wide mt-2 shadow-lg">Log in</button>
+        </form>
+        <div class="pt-2"><button onclick="bypassAuth('GuestUser')" class="w-full flex items-center justify-center space-x-2 bg-transparent text-emerald-400 hover:text-emerald-300 transition py-1 rounded-xl text-sm font-medium"><span>Continue as guest</span></button></div>
+      </div>
+      <div class="text-center text-sm text-zinc-500"><span>Don't have an account?</span><button onclick="alert('Account feature confirmed.')" class="text-emerald-400 font-semibold ml-1 hover:underline">Create one</button></div>
+    </div>
 
-  <script>
-    // Loads the core structure and applies the cyber themes dynamically
-    fetch('/login.html').then(res => res.text()).then(html => {
-      const view = document.getElementById('app-view');
-      view.innerHTML = html;
-      applyCyberStyles();
-    });
+    <!-- MAIN CHAT DASHBOARD GRIDS -->
+    <div id="dashboard-interface" class="hidden w-full h-screen overflow-hidden flex flex-col">
+      <header class="bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between shadow-lg">
+        <div class="flex items-center space-x-3"><div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-blue-600 flex items-center justify-center font-bold text-white shadow-md">E</div><h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">emmasucks</h1></div>
+        <div class="flex items-center space-x-6">
+          <div class="flex items-center space-x-2 bg-emerald-950/40 border border-emerald-800/60 px-3 py-1.5 rounded-full"><span class="text-amber-400 font-bold text-sm">🪙</span><span id="coin-count" class="font-bold text-emerald-200 text-sm tracking-wide">3015</span></div>
+          <div class="flex items-center space-x-2"><div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div><span id="user-display" class="text-sm font-medium text-zinc-400">Admin</span></div>
+        </div>
+      </header>
+      <div class="flex flex-1 overflow-hidden">
+        <aside class="w-80 bg-zinc-900/40 border-r border-zinc-800 p-4 flex flex-col space-y-4">
+          <div class="flex items-center justify-between"><h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Chat Lobbies</h2><button onclick="createRoom()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition flex items-center space-x-1 bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 rounded-md"><span>+ New Chat</span></button></div>
+          <nav id="lobby-container" class="flex-1 overflow-y-auto space-y-1 pr-1">
+            <button onclick="switchRoom('stellalovesgraves')" id="btn-stellalovesgraves" class="w-full text-left p-3 rounded-xl bg-emerald-600/10 border border-emerald-500/20 text-emerald-200 font-medium transition flex flex-col space-y-1"><span class="text-sm font-bold"># stellalovesgraves</span><span class="text-xs text-emerald-400/80 font-normal truncate">if Phillip graves is lost please return to stella</span></button>
+            <button onclick="switchRoom('testchatformods')" id="btn-testchatformods" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent hover:border-zinc-800 text-zinc-400 hover:text-zinc-200 font-medium transition flex flex-col space-y-1"><span class="text-sm font-bold"># TestChatForMods</span><span class="text-xs text-zinc-500 truncate">*vsauce music plays*</span></button>
+          </nav>
+        </aside>
+        <main class="flex-1 flex flex-col bg-zinc-950">
+          <div class="px-6 py-4 bg-zinc-900/20 border-b border-zinc-900 flex items-center justify-between"><div><h3 id="room-title" class="font-bold text-lg text-zinc-100"># stellalovesgraves</h3><p id="room-desc" class="text-xs text-emerald-400 mt-0.5">if Phillip graves is lost please return to stella</p></div></div>
+          <div id="messages-window" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+          <footer class="p-4 bg-zinc-900/30 border-t border-zinc-900"><form onsubmit="sendMessage(event)" class="flex space-x-3 max-w-5xl mx-auto items-center"><input type="text" id="msg-input" autocomplete="off" placeholder="Message active lobby..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200"><button type="submit" class="bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 transition px-5 py-3 rounded-xl text-sm font-bold text-white shadow-md">Send</button></form></footer>
+        </main>
+      </div>
+    </div>
 
-    function applyCyberStyles() {
-      // Find containers and force them into custom cyber matrix styles
-      const card = document.getElementById('auth-screen') || document.getElementById('main-dashboard');
-      if (card) card.classList.add('cyber-panel');
-
-      const title = document.getElementById('auth-title');
-      if (title) title.classList.add('cyber-text');
-    }
-
-    // Handles screen navigation on click
-    function handleAuthSubmit(event) {
-      event.preventDefault();
-      fetch('/chat.html').then(res => res.text()).then(html => {
-        const app = document.getElementById('app-view');
-        app.className = "w-full h-screen flex flex-col"; // Reset centering rules
-        app.innerHTML = html;
-        applyCyberStyles();
-      });
-    }
-  </script>
-</body>
-</html>
+  </div>
