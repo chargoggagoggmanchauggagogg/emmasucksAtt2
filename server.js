@@ -6,10 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serves your frontend interface layout files
+// Serves your index.html and style.css files
 app.use(express.static(__dirname));
 
-// DATABASE CONTROLLER ARRAYS (Now fully dynamic)
+// DYNAMIC DATABASE DATA ARRAYS
 let chatRooms = [
   { id: "stellalovesgraves", name: "stellalovesgraves", description: "if Phillip graves is lost please return to stella" },
   { id: "testchatformods", name: "TestChatForMods", description: "*vsauce music plays*" },
@@ -17,29 +17,50 @@ let chatRooms = [
 ];
 let messages = [];
 
-// 1. ACCOUNT HANDLERS
-app.post('/api/auth/login', (req, res) => {
+// PROFILE PLAYLOAD OBJECT: This mimics Base44's user profile response structure
+const mockProfile = {
+  id: "admin-uid-123",
+  username: "Admin",
+  email: "admin@emmasucks.com",
+  coins: 3015,
+  achievements: ["coins_100", "coins_1000"],
+  inventory: ["🎁 Daily Reward"]
+};
+
+// 1. FIXED DATA PATHWAY HANDLERS (Matching your screenshot)
+// Handles the "/me" authentication verification request path
+app.get(['/me', '/api/me', '/api/auth/me'], (req, res) => {
+  res.json(mockProfile);
+});
+
+// Handles your app project ID path token: 6a207dac29768bf2746a6d1d
+app.all(['/6a207dac29768bf2746a6d1d', '/api/apps/6a207dac29768bf2746a6d1d', '/api/6a207dac29768bf2746a6d1d'], (req, res) => {
+  res.json({ id: "6a207dac29768bf2746a6d1d", name: "emmasucks", status: "active", owner: "admin-uid" });
+});
+
+// Handles the system loop "/batch" background request path
+app.post(['/batch', '/api/batch'], (req, res) => {
   res.json({
-    status: "ok",
-    token: "mock-jwt-token-string",
-    user: { id: "admin-uid", username: "Admin", email: req.body.email || "admin@emmasucks.com", coins: 3015 }
+    me: mockProfile,
+    rooms: chatRooms,
+    messages: messages
   });
 });
 
-app.post('/api/auth/signup', (req, res) => {
-  res.json({
-    status: "ok",
-    token: "mock-jwt-token-string",
-    user: { id: "user-" + Date.now(), username: "NewUser", email: req.body.email || "user@emmasucks.com", coins: 0 }
-  });
+// 2. ACCOUNT CREATION LOGIN / SIGNUP LINKS
+app.post(['/api/auth/login', '/auth/login', '/login'], (req, res) => {
+  res.json({ status: "ok", token: "mock-jwt-token-string", user: mockProfile });
 });
 
-// 2. DYNAMIC CHAT ROOM CONVERTER (Fixes the /chat/undefined bug!)
+app.post(['/api/auth/signup', '/auth/signup', '/signup'], (req, res) => {
+  res.json({ status: "ok", token: "mock-jwt-token-string", user: mockProfile });
+});
+
+// 3. CHAT CHANNELS MANAGEMENT RULES
 app.get(['/api/rooms', '/api/entities/Rooms', '/api/entities/ChatRooms', '/api/entities/rooms'], (req, res) => {
-  // Map our data to match both standard names and Base44's unexpected formatting hooks
   const formattedRooms = chatRooms.map(room => ({
     ...room,
-    _id: room.id, // Handles strict database key locks
+    _id: room.id,
     path: `/chat/${room.id}`,
     room_id: room.id
   }));
@@ -48,9 +69,7 @@ app.get(['/api/rooms', '/api/entities/Rooms', '/api/entities/ChatRooms', '/api/e
 
 app.post(['/api/rooms', '/api/entities/Rooms', '/api/entities/ChatRooms', '/api/entities/rooms', '/api/rooms/create'], (req, res) => {
   const roomName = req.body.name || "Unnamed Chat";
-  // Generates a clean URL string without spaces or weird punctuation
   const cleanId = roomName.toLowerCase().replace(/[^a-z0-9]/g, '');
-
   const newRoom = {
     id: cleanId,
     _id: cleanId,
@@ -59,30 +78,13 @@ app.post(['/api/rooms', '/api/entities/Rooms', '/api/entities/ChatRooms', '/api/
     path: `/chat/${cleanId}`,
     room_id: cleanId
   };
-
-  chatRooms.push(newRoom); // Adds it permanently to the database array stream
+  chatRooms.push(newRoom);
   res.json(newRoom);
 });
 
-// 3. TEXT MESSAGE HANDLERS
-app.get(['/api/messages', '/api/entities/Messages', '/api/entities/messages'], (req, res) => {
-  res.json(messages);
-});
-
-app.post(['/api/messages', '/api/entities/Messages', '/api/entities/messages'], (req, res) => {
-  const newMsg = {
-    id: "msg-" + Date.now(),
-    text: req.body.text || "",
-    sender: req.body.sender || "Anonymous",
-    timestamp: new Date().toISOString()
-  };
-  messages.push(newMsg);
-  res.json(newMsg);
-});
-
-// Fallbacks to process remaining UI element polling hooks
+// Fallback logic route to handle minor system polling queries safely
 app.use((req, res) => {
-  res.json([]);
+  res.json({ status: "ok", data: [] });
 });
 
 const PORT = process.env.PORT || 3000;
