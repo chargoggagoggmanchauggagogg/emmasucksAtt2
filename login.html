@@ -1,0 +1,13 @@
+<div id="auth-screen" class="w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl flex flex-col space-y-6 mx-4">
+  <div class="text-center space-y-2">
+    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500 to-blue-600 font-bold text-white text-xl">E</div>
+    <h1 id="auth-title" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Create Account</h1>
+  </div>
+  <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+    <div id="field-username"><label class="text-xs font-semibold text-zinc-400 block mb-1">Username</label><input type="text" id="auth-username" placeholder="e.g. chatmaster99" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200"></div>
+    <div><label class="text-xs font-semibold text-zinc-400 block mb-1">Email</label><input type="text" id="auth-email" placeholder="you@example.com" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200" required></div>
+    <div><label class="text-xs font-semibold text-zinc-400 block mb-1">Password</label><input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200" required></div>
+    <div id="field-confirm"><label class="text-xs font-semibold text-zinc-400 block mb-1">Confirm Password</label><input type="password" id="auth-confirm" placeholder="••••••••" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200"></div>
+    <button type="submit" id="submit-btn" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 transition py-3 rounded-xl text-sm font-bold text-white shadow-lg">Create Account</button>
+  </form>
+</div>
