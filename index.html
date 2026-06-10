@@ -5,31 +5,8 @@
   <title>emmasucks</title>
   <script src="https://tailwindcss.com"></script>
   <link rel="stylesheet" href="/style.css">
-  <style>
-    /* This forces the login wrapper to disappear and reveals your dashboard layout */
-    div[class*="login"], div[class*="auth"], div[id*="login"], section[class*="auth"] {
-      display: none !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-    /* Forces the main application dashboard grid to stay visible */
-    main, #root > div, .app-container {
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-    }
-  </style>
-  <script>
-    // Forces the code bundle to think a user is permanently signed in with 3015 coins
-    window.localStorage.setItem('user', JSON.stringify({ id: "admin", username: "Admin", email: "admin@emmasucks.com" }));
-    window.localStorage.setItem('token', 'mock-token-auth');
-    window.localStorage.setItem('coins', '3015');
-    
-    // Completely mutes all background system requests so it can never throw a 404 block again
-    window.fetch = async () => new Response(JSON.stringify({ status: "ok", coins: 3015 }), { status: 200 });
-  </script>
 </head>
-<body class="bg-zinc-950 text-white">
+<body>
   
   <div id="root"></div>
 
