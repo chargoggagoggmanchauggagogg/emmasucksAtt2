@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>emmasucks | Network</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://googleapis.com" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>body{font-family:'Plus Jakarta Sans',sans-serif;background-color:#09090b;}</style>
 </head>
 <body class="text-zinc-100 h-screen overflow-hidden flex flex-col items-center justify-center">
@@ -12,8 +12,8 @@
   <div id="app-view" class="w-full h-screen flex flex-col items-center justify-center">
     
     <div id="login-interface" class="w-full max-w-md flex flex-col items-center space-y-6 mx-4">
-      <div class="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/10">
-        <svg class="w-8 h-8 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/10">
+        <svg class="w-6 h-6 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
         </svg>
       </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
         <button onclick="bypassAuth('GoogleUser')" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
-          <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
           <span>Continue with Google</span>
         </button>
         <div class="relative flex py-1 items-center"><div class="flex-grow border-t border-zinc-800/40"></div><span class="flex-shrink mx-4 text-xs font-semibold text-zinc-600 uppercase tracking-widest">or</span><div class="flex-grow border-t border-zinc-800/40"></div></div>
@@ -33,10 +33,10 @@
             <input type="text" id="auth-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
           </div>
           <div>
-            <div class="flex justify-between items-baseline mb-2"><label class="block text-sm font-semibold text-zinc-300">Password</label><button type="button" class="text-xs font-medium text-blue-400 hover:underline">Forgot password?</button></div>
+            <div class="flex justify-between items-baseline mb-2"><label class="block text-sm font-semibold text-zinc-300">Password</label></div>
             <input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
           </div>
-          <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 transition py-3 rounded-xl text-sm font-bold text-white tracking-wide mt-2 shadow-lg">Log in</button>
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-xl text-sm font-bold text-zinc-950 tracking-wide mt-2 shadow-lg">Log in</button>
         </form>
         <div class="pt-2"><button onclick="bypassAuth('GuestUser')" class="w-full flex items-center justify-center space-x-2 bg-transparent text-emerald-400 hover:text-emerald-300 transition py-1 rounded-xl text-sm font-medium"><span>Continue as guest</span></button></div>
       </div>
@@ -44,8 +44,8 @@
     </div>
 
     <div id="signup-interface" class="hidden w-full max-w-md flex flex-col items-center space-y-6 mx-4">
-      <div class="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/10">
-        <svg class="w-8 h-8 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <div class="w-14 h-14 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/10">
+        <svg class="w-6 h-6 text-zinc-950" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
         </svg>
       </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
         <button onclick="bypassAuth('GoogleUser')" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
-          <svg class="w-4 h-4" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
           <span>Continue with Google</span>
         </button>
         <div class="relative flex py-1 items-center"><div class="flex-grow border-t border-zinc-800/40"></div><span class="flex-shrink mx-4 text-xs font-semibold text-zinc-600 uppercase tracking-widest">or</span><div class="flex-grow border-t border-zinc-800/40"></div></div>
@@ -78,7 +78,7 @@
             <label for="signup-captcha" class="text-sm font-medium text-zinc-400 select-none cursor-pointer">I am not a bot</label>
           </div>
 
-          <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 transition py-3 rounded-xl text-sm font-bold text-white tracking-wide mt-2 shadow-lg">Sign up</button>
+          <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 transition py-3 rounded-xl text-sm font-bold text-zinc-950 tracking-wide mt-2 shadow-lg">Sign up</button>
         </form>
       </div>
       <div class="text-center text-sm text-zinc-500"><span>Already have an account?</span><button onclick="toggleAuthScreens('login')" class="text-emerald-400 font-semibold ml-1 hover:underline">Log in</button></div>
@@ -104,29 +104,18 @@
 
       <div class="flex flex-1 overflow-hidden">
         <aside class="w-80 bg-zinc-900/40 border-r border-zinc-800 p-4 flex flex-col space-y-4">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Navigation</h2>
-          </div>
-          <nav class="space-y-1">
+          <div>
+            <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Navigation</h2>
             <button onclick="showHomeView()" id="btn-nav-home" class="w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold transition flex items-center space-x-3">
-              <span>🏠</span> <span class="text-sm">Home & Store</span>
+              <span>🏠</span> <span class="text-sm">Home Hub</span>
             </button>
-          </nav>
+          </div>
 
           <div class="flex items-center justify-between pt-2">
             <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Chat Lobbies</h2>
-            <button onclick="createRoom()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition flex items-center space-x-1 bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 rounded-md"><span>+ New Chat</span></button>
+            <button onclick="createRoom()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 rounded-md">+ New</button>
           </div>
-          <nav id="lobby-container" class="flex-1 overflow-y-auto space-y-1 pr-1">
-            <button onclick="switchRoom('stellalovesgraves')" id="btn-stellalovesgraves" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex flex-col space-y-1">
-              <span class="text-sm font-bold"># stellalovesgraves</span>
-              <span class="text-xs text-zinc-500 truncate">if Phillip graves is lost please return to stella</span>
-            </button>
-            <button onclick="switchRoom('testchatformods')" id="btn-testchatformods" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex flex-col space-y-1">
-              <span class="text-sm font-bold"># TestChatForMods</span>
-              <span class="text-xs text-zinc-500 truncate">*vsauce music plays*</span>
-            </button>
-          </nav>
+          <nav id="lobby-container" class="flex-1 overflow-y-auto space-y-1 pr-1"></nav>
         </aside>
 
         <div class="flex-1 flex flex-col bg-zinc-950 relative">
@@ -135,17 +124,17 @@
             <div class="bg-gradient-to-r from-zinc-900 to-[#121214] border border-zinc-800 p-6 rounded-2xl flex items-center justify-between shadow-xl">
               <div class="space-y-1">
                 <h2 class="text-2xl font-bold tracking-tight text-white">Welcome Home, <span id="home-user-title" class="text-emerald-400">Admin</span>!</h2>
-                <p class="text-sm text-zinc-400">Manage your network items, coins, and settings.</p>
+                <p class="text-sm text-zinc-400">Claim your allowance, chat to earn passive coins, or check out the shop below.</p>
               </div>
-              <div class="w-12 h-12 rounded-xl bg-emerald-950/40 border border-emerald-800 flex items-center justify-center text-xl">👤</div>
+              <div id="status-tag-perk" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-xs text-zinc-400 border border-zinc-700">Standard Rank</div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
                 <div class="flex items-start justify-between">
                   <div class="space-y-1">
-                    <h3 class="font-bold text-zinc-200">Daily Coins Reward</h3>
-                    <p class="text-xs text-zinc-500">Claim your free allocation of network currency.</p>
+                    <h3 class="font-bold text-zinc-200">Daily Reward Check-in</h3>
+                    <p class="text-xs text-zinc-500">Collect your daily currency injection instantly.</p>
                   </div>
                   <span class="text-2xl">🎁</span>
                 </div>
@@ -157,28 +146,44 @@
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
                 <div class="flex items-start justify-between">
                   <div class="space-y-1">
-                    <h3 class="font-bold text-zinc-200">Network Shop</h3>
-                    <p class="text-xs text-zinc-500">Spend your accumulated coins on network perks.</p>
-                  </div>
-                  <span class="text-2xl">🛒</span>
-                </div>
-                <button onclick="alert('Network store feature updates coming soon!')" class="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-semibold py-2.5 px-4 rounded-xl text-sm border border-zinc-700 transition">
-                  Browse Store
-                </button>
-              </div>
-
-              <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg md:col-span-2 lg:col-span-1">
-                <div class="flex items-start justify-between">
-                  <div class="space-y-1">
-                    <h3 class="font-bold text-zinc-200">Status Monitor</h3>
-                    <p class="text-xs text-zinc-500">System architecture validation details.</p>
+                    <h3 class="font-bold text-zinc-200">Passive Miner Monitor</h3>
+                    <p class="text-xs text-zinc-500">Earning rates configured across active systems.</p>
                   </div>
                   <span class="text-2xl">⚡</span>
                 </div>
-                <div class="flex justify-between items-center text-xs text-zinc-400 bg-zinc-950/60 p-2.5 rounded-xl border border-zinc-900">
-                  <span>Network Sync Status:</span>
-                  <span class="text-emerald-400 font-semibold flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>Operational</span>
+                <div class="space-y-2 text-xs text-zinc-400">
+                  <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
+                    <span>Uptime Generation Rate:</span> <span class="text-emerald-400 font-bold">+5 Coins / 10s</span>
+                  </div>
+                  <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
+                    <span>Chat Engagement Output:</span> <span class="text-emerald-400 font-bold">+15 Coins / Msg</span>
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="text-lg font-bold tracking-tight text-white flex items-center gap-2"><span>🛒</span> Network Shop</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex items-center justify-between shadow-lg">
+                  <div class="space-y-1">
+                    <h4 class="font-bold text-sm text-zinc-200">Premium Mod Title Tag</h4>
+                    <p class="text-xs text-zinc-500">Unlocks custom rank label display banner.</p>
+                    <span class="inline-block text-[10px] bg-amber-950/40 text-amber-400 font-semibold border border-amber-900/60 rounded px-1.5 py-0.5 mt-1">Cost: 600 Coins</span>
+                  </div>
+                  <button onclick="buyPerk('tag', 600)" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold py-2 px-4 rounded-xl transition border border-zinc-700">Purchase</button>
+                </div>
+
+                <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex items-center justify-between shadow-lg">
+                  <div class="space-y-1">
+                    <h4 class="font-bold text-sm text-zinc-200">Emerald Identity Glow Color</h4>
+                    <p class="text-xs text-zinc-500">Transforms text styling on layout chat handles.</p>
+                    <span class="inline-block text-[10px] bg-amber-950/40 text-amber-400 font-semibold border border-amber-900/60 rounded px-1.5 py-0.5 mt-1">Cost: 1200 Coins</span>
+                  </div>
+                  <button onclick="buyPerk('color', 1200)" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold py-2 px-4 rounded-xl transition border border-zinc-700">Purchase</button>
+                </div>
+
               </div>
             </div>
           </div>
@@ -187,14 +192,14 @@
             <div class="px-6 py-4 bg-zinc-900/20 border-b border-zinc-900 flex items-center justify-between">
               <div>
                 <h3 id="room-title" class="font-bold text-lg text-zinc-100"># stellalovesgraves</h3>
-                <p id="room-desc" class="text-xs text-emerald-400 mt-0.5">if Phillip graves is lost please return to stella</p>
+                <p id="room-desc" class="text-xs text-emerald-400 mt-0.5">Lobby details parsing placeholder</p>
               </div>
             </div>
             <div id="messages-window" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
             <footer class="p-4 bg-zinc-900/30 border-t border-zinc-900">
               <form onsubmit="sendMessage(event)" class="flex space-x-3 max-w-5xl mx-auto items-center">
-                <input type="text" id="msg-input" autocomplete="off" placeholder="Message active lobby..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
-                <button type="submit" class="bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-500 hover:to-emerald-700 transition px-5 py-3 rounded-xl text-sm font-bold text-white shadow-md">Send</button>
+                <input type="text" id="msg-input" autocomplete="off" placeholder="Type messages to generate currency..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 transition px-5 py-3 rounded-xl text-sm font-bold shadow-md">Send (+15🪙)</button>
               </form>
             </footer>
           </div>
@@ -207,6 +212,7 @@
   <script>
     let activeUser = "Admin", activeRoom = "";
     let currentCoins = 3015;
+    let purchasedPerks = [];
 
     function toggleAuthScreens(screen) {
       if (screen === 'signup') {
@@ -220,12 +226,10 @@
 
     async function handleSignup(e) {
       e.preventDefault();
-      const isHuman = document.getElementById('signup-captcha').checked;
-      if (!isHuman) {
+      if (!document.getElementById('signup-captcha').checked) {
         alert("Please verify that you are not a bot!");
         return;
       }
-
       const username = document.getElementById('signup-username').value.trim();
       const email = document.getElementById('signup-email').value.trim();
       const password = document.getElementById('signup-password').value;
@@ -238,16 +242,14 @@
         });
         const data = await res.json();
         if (data.success) {
-          alert("Account created successfully!");
           activeUser = data.username;
-          document.getElementById('signup-interface').classList.add('hidden');
+          currentCoins = data.coins;
           launchDashboard();
         } else {
-          alert(data.message || "Signup failed");
+          alert(data.message || "Signup logic execution failure");
         }
       } catch (err) {
-        console.error("Signup error:", err);
-        alert("Server error during signup.");
+        alert("Account verification pipeline broken.");
       }
     }
 
@@ -265,35 +267,36 @@
         const data = await res.json();
         if (data.success) {
           activeUser = data.username;
+          currentCoins = data.coins;
           launchDashboard();
         } else {
-          alert(data.message || "Login failed");
+          alert(data.message || "Invalid authentication coordinates");
         }
       } catch (err) {
-        console.error("Login error:", err);
-        alert("Server error during login.");
+        alert("Login route verification failed.");
       }
     }
 
     async function bypassAuth(type) {
-      if (type === "GoogleUser") {
-        try {
-          const res = await fetch('/api/google-login', { method: 'POST' });
-          const data = await res.json();
-          if (data.success) {
-            activeUser = data.username;
-            document.getElementById('login-interface').classList.add('hidden');
-            document.getElementById('signup-interface').classList.add('hidden');
-            launchDashboard();
-          }
-        } catch (err) {
-          console.error("Google Auth Fail:", err);
+      try {
+        const url = type === "GoogleUser" ? '/api/google-login' : '/api/login';
+        const bodyData = type === "GoogleUser" ? {} : { usernameOrEmail: "Admin", password: "password123" };
+        
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(bodyData)
+        });
+        const data = await res.json();
+        if (data.success) {
+          activeUser = data.username;
+          currentCoins = data.coins;
+          launchDashboard();
         }
-      } else {
+      } catch (err) {
+        // Safe Guest Fallback if network offline
         activeUser = "Guest_" + Math.floor(Math.random()*900+100);
-        currentCoins = 0;
-        document.getElementById('coin-count').innerText = currentCoins;
-        document.getElementById('login-interface').classList.add('hidden');
+        currentCoins = 150;
         launchDashboard();
       }
     }
@@ -301,34 +304,145 @@
     function launchDashboard() {
       document.getElementById('user-display').innerText = activeUser;
       document.getElementById('home-user-title').innerText = activeUser;
-      document.getElementById('login-interface').style.display = "none";
-      const view = document.getElementById('app-view');
-      view.className = "w-full h-screen flex flex-col";
+      document.getElementById('coin-count').innerText = currentCoins;
+      document.getElementById('login-interface').classList.add('hidden');
+      document.getElementById('signup-interface').classList.add('hidden');
       document.getElementById('dashboard-interface').classList.remove('hidden');
+      syncRoomsList();
       showHomeView();
+      
+      // Auto-accrual: Generate 5 coins passively every 10 seconds online
+      setInterval(() => {
+        updateCoinsBalance(5);
+      }, 10000);
     }
 
-    // Navigation state mapping
     function showHomeView() {
       activeRoom = "";
       document.getElementById('chat-view-panel').classList.add('hidden');
       document.getElementById('home-view-panel').classList.remove('hidden');
-      
-      // Update sidebar styling highlight
-      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold transition flex items-center space-x-3";
-      document.querySelectorAll('#lobby-container button').forEach(btn => {
-        btn.className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex flex-col space-y-1";
+      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
+      syncRoomsList();
+    }
+
+    async function updateCoinsBalance(amount) {
+      currentCoins += amount;
+      document.getElementById('coin-count').innerText = currentCoins;
+      await fetch('/api/user/sync-coins', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: activeUser, coins: currentCoins })
       });
     }
 
     function claimDailyCoins() {
-      currentCoins += 100;
-      document.getElementById('coin-count').innerText = currentCoins;
-      const claimBtn = document.getElementById('daily-claim-btn');
-      claimBtn.disabled = true;
-      claimBtn.innerText = "Claimed Today";
-      claimBtn.className = "w-full bg-zinc-800 text-zinc-500 font-bold py-2.5 px-4 rounded-xl text-sm cursor-not-allowed border border-zinc-700 transition";
-      alert("Success! +100 network coins loaded.");
+      updateCoinsBalance(100);
+      const btn = document.getElementById('daily-claim-btn');
+      btn.disabled = true;
+      btn.innerText = "Claimed for Today";
+      btn.className = "w-full bg-zinc-900 text-zinc-600 font-medium py-2.5 px-4 rounded-xl text-sm border border-zinc-800 cursor-not-allowed transition";
+    }
+
+    function buyPerk(perkType, price) {
+      if (purchasedPerks.includes(perkType)) {
+        alert("This account item modifier is active.");
+        return;
+      }
+      if (currentCoins < price) {
+        alert("Insufficient network balance for purchase.");
+        return;
+      }
+      purchasedPerks.push(perkType);
+      updateCoinsBalance(-price);
+      
+      if (perkType === 'tag') {
+        document.getElementById('status-tag-perk').innerText = "Premium Rank Member";
+        document.getElementById('status-tag-perk').className = "px-3 py-1.5 rounded-xl bg-emerald-950 text-xs text-emerald-400 border border-emerald-800";
+      }
+      alert("Upgrade acquired successfully!");
+    }
+
+    async function syncRoomsList() {
+      try {
+        const res = await fetch('/api/rooms');
+        const rooms = await res.json();
+        const container = document.getElementById('lobby-container');
+        container.innerHTML = '';
+        rooms.forEach(room => {
+          const wrapper = document.createElement('div');
+          wrapper.className = "group w-full relative flex items-center justify-between rounded-xl hover:bg-zinc-800/40 p-1 pr-3 transition";
+          
+          const btn = document.createElement('button');
+          btn.className = "flex-1 text-left p-2 flex flex-col space-y-0.5 overflow-hidden";
+          btn.onclick = () => switchRoom(room.id);
+          
+          const isActive = (room.id === activeRoom);
+          const nameColor = isActive ? "text-emerald-400 font-bold" : "text-zinc-300 font-semibold group-hover:text-zinc-100";
+          
+          btn.innerHTML = `<span class="text-sm truncate ${nameColor}"># ${room.name}</span><span class="text-[11px] text-zinc-500 truncate">${room.desc}</span>`;
+          wrapper.appendChild(btn);
+          
+          // Delete function access layout configurations
+          const delBtn = document.createElement('button');
+          delBtn.className = "opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 font-bold text-xs p-1 rounded transition ml-2 z-30";
+          delBtn.innerHTML = "✕";
+          delBtn.onclick = (e) => {
+            e.stopPropagation();
+            deleteRoom(room.id);
+          };
+          wrapper.appendChild(delBtn);
+          
+          if (isActive) wrapper.classList.add("bg-zinc-900", "border", "border-zinc-800");
+          container.appendChild(wrapper);
+        });
+      } catch (err) { console.error("Rooms syncing broken", err); }
+    }
+
+    function switchRoom(roomId) {
+      activeRoom = roomId;
+      document.getElementById('home-view-panel').classList.add('hidden');
+      document.getElementById('chat-view-panel').classList.remove('hidden');
+      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
+      
+      syncRoomsList();
+      
+      fetch('/api/rooms').then(r => r.json()).then(rooms => {
+        const current = rooms.find(r => r.id === roomId);
+        if (current) {
+          document.getElementById('room-title').innerText = `# ${current.name}`;
+          document.getElementById('room-desc').innerText = current.desc;
+        }
+      });
+      loadMessages();
+    }
+
+    async function createRoom() {
+      const name = prompt("Enter new chat lobby name:"); if (!name) return;
+      const desc = prompt("Enter lobby description:") || "Custom lounge channel.";
+      try {
+        const res = await fetch('/api/rooms', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, desc })
+        });
+        const data = await res.json();
+        if (data.success) {
+          const cleanId = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+          switchRoom(cleanId);
+        } else { alert(data.message); }
+      } catch (err) { console.error(err); }
+    }
+
+    async function deleteRoom(roomId) {
+      if (!confirm("Are you sure you want to delete this chat room and its logs?")) return;
+      try {
+        const res = await fetch(`/api/rooms/${roomId}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          if (activeRoom === roomId) showHomeView();
+          else syncRoomsList();
+        }
+      } catch (err) { console.error(err); }
     }
 
     async function loadMessages() {
@@ -340,12 +454,16 @@
         const win = document.getElementById('messages-window');
         win.innerHTML = '';
         filtered.forEach(msg => {
+          const isMsgPremium = msg.sender === "GoogleUser" || msg.sender === "Admin";
+          const colorClass = isMsgPremium ? "text-emerald-400 font-bold" : "text-zinc-400 font-semibold";
+          const tagLabel = isMsgPremium ? `<span class="text-[9px] bg-emerald-950 text-emerald-400 border border-emerald-800 px-1 rounded">PRO</span>` : '';
+          
           const div = document.createElement('div'); div.className = "flex flex-col space-y-1 max-w-3xl mb-3";
-          div.innerHTML = `<div class="flex items-baseline space-x-2"><span class="text-sm font-bold text-emerald-400">${msg.sender}</span><span class="text-[10px] text-zinc-500">${new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span></div><div class="bg-zinc-900 border border-zinc-800 px-4 py-2.5 rounded-2xl rounded-tl-none text-sm shadow-sm">${msg.text}</div>`;
+          div.innerHTML = `<div class="flex items-center space-x-2">${tagLabel}<span class="text-sm ${colorClass}">${msg.sender}</span><span class="text-[10px] text-zinc-500">${new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span></div><div class="bg-zinc-900 border border-zinc-800 px-4 py-2.5 rounded-2xl rounded-tl-none text-sm shadow-sm text-zinc-200">${msg.text}</div>`;
           win.appendChild(div);
         });
         win.scrollTop = win.scrollHeight;
-      } catch (err) { console.error("Sync log crash:", err); }
+      } catch (err) { console.error(err); }
     }
 
     async function sendMessage(e) {
@@ -354,41 +472,15 @@
       const text = input.value.trim();
       if (!text) return;
       try {
-        await fetch('/api/messages', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender: activeUser, text: text, room: activeRoom }) });
+        await fetch('/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sender: activeUser, text: text, room: activeRoom })
+        });
         input.value = '';
         loadMessages();
-      } catch (err) { console.error("Send crash:", err); }
-    }
-
-    function switchRoom(roomId) {
-      // Manage panel view toggles
-      document.getElementById('home-view-panel').classList.add('hidden');
-      document.getElementById('chat-view-panel').classList.remove('hidden');
-      
-      // Update sidebar styles
-      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex items-center space-x-3";
-      document.querySelectorAll('#lobby-container button').forEach(btn => {
-        btn.className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex flex-col space-y-1";
-      });
-      
-      const target = document.getElementById(`btn-${roomId}`);
-      if (target) target.className = "w-full text-left p-3 rounded-xl bg-emerald-600/10 border border-emerald-500/20 text-emerald-200 transition flex flex-col space-y-1 shadow-md";
-      document.getElementById('room-title').innerText = target.querySelector('.font-bold').innerText;
-      document.getElementById('room-desc').innerText = target.querySelector('.text-xs').innerText;
-      
-      activeRoom = roomId;
-      loadMessages();
-    }
-
-    function createRoom() {
-      const name = prompt("Enter new chat lobby name:"); if (!name) return;
-      const desc = prompt("Enter lobby description:") || "Custom lounge.";
-      const cleanId = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const btn = document.createElement('button'); btn.id = `btn-${cleanId}`; btn.onclick = () => switchRoom(cleanId);
-      btn.className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/50 border border-transparent text-zinc-400 font-medium transition flex flex-col space-y-1";
-      btn.innerHTML = `<span class="text-sm font-bold"># ${name}</span><span class="text-xs text-zinc-500 truncate">${desc}</span>`;
-      document.getElementById('lobby-container').appendChild(btn);
-      switchRoom(cleanId);
+        updateCoinsBalance(15); // Gives 15 coins for every message sent
+      } catch (err) { console.error(err); }
     }
 
     setInterval(loadMessages, 2000);
