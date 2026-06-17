@@ -22,7 +22,7 @@
         <p class="text-sm text-zinc-400">Log in to your account</p>
       </div>
       <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
-        <button onclick="bypassAuth('GoogleUser')" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
+        <button onclick="handleGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
           <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
           <span>Continue with Google</span>
         </button>
@@ -52,6 +52,11 @@
         <h1 class="text-3xl font-bold tracking-tight text-white">Create account</h1>
       </div>
       <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
+        <button onclick="handleGoogleLogin()" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
+          <span>Sign up with Google</span>
+        </button>
+        <div class="relative flex py-1 items-center"><div class="flex-grow border-t border-zinc-800/40"></div><span class="flex-shrink mx-4 text-xs font-semibold text-zinc-600 uppercase tracking-widest">or</span><div class="flex-grow border-t border-zinc-800/40"></div></div>
         <form onsubmit="handleSignup(event)" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Username</label>
@@ -65,10 +70,6 @@
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Password</label>
             <input type="password" id="signup-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
-          <div class="flex items-center space-x-3 bg-zinc-900/50 p-3 rounded-xl border border-zinc-800/60 my-2">
-            <input type="checkbox" id="signup-captcha" class="w-4 h-4 accent-emerald-500 bg-zinc-950 rounded cursor-pointer" required>
-            <label for="signup-captcha" class="text-sm font-medium text-zinc-400 select-none cursor-pointer">I am not a bot</label>
-          </div>
           <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-xl text-sm font-bold text-zinc-950 mt-2 shadow-lg">Sign up</button>
         </form>
       </div>
@@ -78,13 +79,13 @@
     <div id="dashboard-interface" class="hidden w-full h-screen overflow-hidden flex flex-col">
       <header class="bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between shadow-lg z-10">
         <button onclick="showHomeView()" class="flex items-center space-x-3 group text-left focus:outline-none">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-emerald-800 flex items-center justify-center font-bold text-white shadow-md group-hover:from-emerald-500 group-hover:to-emerald-700 transition">E</div>
-          <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-emerald-400 to-zinc-200 bg-clip-text text-transparent group-hover:from-emerald-300 transition">emmasucks</h1>
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 to-emerald-800 flex items-center justify-center font-bold text-white shadow-md">E</div>
+          <h1 class="text-xl font-bold tracking-tight text-white">emmasucks</h1>
         </button>
         <div class="flex items-center space-x-6">
           <div class="flex items-center space-x-2 bg-emerald-950/40 border border-emerald-800/60 px-3 py-1.5 rounded-full">
             <span class="text-amber-400 font-bold text-sm">🪙</span>
-            <span id="coin-count" class="font-bold text-emerald-200 text-sm tracking-wide">3015</span>
+            <span id="coin-count" class="font-bold text-emerald-200 text-sm">150</span>
           </div>
           <div class="flex items-center space-x-2">
             <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
@@ -99,7 +100,7 @@
             <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Navigation</h2>
             <div class="space-y-1">
               <button onclick="showHomeView()" id="btn-nav-home" class="w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3">
-                <span>🏠</span> <span class="text-sm">Home & Daily Reward</span>
+                <span>🏠</span> <span class="text-sm">Home & Balance</span>
               </button>
               <button onclick="showShopView()" id="btn-nav-shop" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 border border-transparent text-zinc-400 font-medium flex items-center space-x-3">
                 <span>🛒</span> <span class="text-sm">Perks Shop</span>
@@ -120,42 +121,36 @@
         <div class="flex-1 flex flex-col bg-zinc-950 relative">
           
           <div id="home-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-8 z-20 bg-zinc-950">
-            <div class="bg-gradient-to-r from-zinc-900 to-[#121214] border border-zinc-800 p-6 rounded-2xl flex items-center justify-between shadow-xl">
+            <div class="bg-[#121214] border border-zinc-800 p-6 rounded-2xl flex items-center justify-between shadow-xl">
               <div class="space-y-1">
-                <h2 class="text-2xl font-bold tracking-tight text-white">Welcome, <span id="home-user-title" class="text-emerald-400">Admin</span>!</h2>
-                <p class="text-sm text-zinc-400">Earn coins passively by staying online or talking in chat rooms.</p>
+                <h2 class="text-2xl font-bold text-white">Welcome, <span id="home-user-title" class="text-emerald-400">Admin</span>!</h2>
+                <p class="text-sm text-zinc-400">The economy has been rebalanced! Stay active and play games to stack coins safely.</p>
               </div>
-              <div id="status-tag-perk" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-xs text-zinc-400 border border-zinc-700">Standard Member</div>
+              <div id="status-tag-perk" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-xs text-zinc-400 border border-zinc-700">Standard Rank</div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <h3 class="font-bold text-zinc-200">Daily Coins Reward</h3>
-                    <p class="text-xs text-zinc-500">Collect your free allocation of network currency.</p>
-                  </div>
-                  <span class="text-2xl">🎁</span>
+                <div>
+                  <h3 class="font-bold text-zinc-200">Daily Bonus Coins</h3>
+                  <p class="text-xs text-zinc-500 mt-1">Claim your daily server currency allocation check-in.</p>
                 </div>
                 <button onclick="claimDailyCoins()" id="daily-claim-btn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2.5 px-4 rounded-xl text-sm transition">
-                  Claim +100 Coins
+                  Claim +25 Coins
                 </button>
               </div>
 
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <h3 class="font-bold text-zinc-200">Earning Multipliers</h3>
-                    <p class="text-xs text-zinc-500">Current network generation parameters.</p>
-                  </div>
-                  <span class="text-2xl">⚡</span>
+                <div>
+                  <h3 class="font-bold text-zinc-200">System Modifiers</h3>
+                  <p class="text-xs text-zinc-500 mt-1">Balanced passive multiplier telemetry tracking rates.</p>
                 </div>
                 <div class="space-y-2 text-xs text-zinc-400">
                   <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
-                    <span>Online Allowance Rate:</span> <span class="text-emerald-400 font-bold">+5 Coins / 10s</span>
+                    <span>Uptime Accrual:</span> <span class="text-emerald-400 font-bold">+2 Coins / 30s</span>
                   </div>
                   <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
-                    <span>Chat Engagement Yield:</span> <span class="text-emerald-400 font-bold">+15 Coins / Msg</span>
+                    <span>Chat Yield:</span> <span class="text-emerald-400 font-bold">+3 Coins / Msg</span>
                   </div>
                 </div>
               </div>
@@ -164,26 +159,25 @@
 
           <div id="shop-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-6 z-20 bg-zinc-950 hidden">
             <div>
-              <h2 class="text-2xl font-bold tracking-tight text-white">Network Shop</h2>
-              <p class="text-sm text-zinc-400">Upgrade your identity aesthetics inside chat lobbies.</p>
+              <h2 class="text-2xl font-bold text-white">Perks Shop</h2>
+              <p class="text-sm text-zinc-400">Purchase modifications using your online currency wallet balance.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="shop-items-grid"></div>
           </div>
 
           <div id="arcade-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-6 z-20 bg-zinc-950 hidden">
             <div>
-              <h2 class="text-2xl font-bold tracking-tight text-white">Arcade Center</h2>
-              <p class="text-sm text-zinc-400">Play integrated minigames to earn currency rewards instantly.</p>
+              <h2 class="text-2xl font-bold text-white">Arcade Hub</h2>
+              <p class="text-sm text-zinc-400">Win mini-game modules to secure strategic layout balance payouts.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <div class="lg:col-span-1 bg-[#121214] border border-zinc-800 p-4 rounded-2xl flex flex-col space-y-2 h-fit">
-                <button onclick="startArcadeGame('snake')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🐍 Classic Snake</span><span class="text-xs text-emerald-400 font-bold">+50 Max</span></button>
-                <button onclick="startArcadeGame('memory')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🧠 Memory Match</span><span class="text-xs text-emerald-400 font-bold">+40 Max</span></button>
-                <button onclick="startArcadeGame('math')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🧮 Speed Math</span><span class="text-xs text-emerald-400 font-bold">+30 Max</span></button>
-                <button onclick="startArcadeGame('guesser')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🔮 Number Guesser</span><span class="text-xs text-emerald-400 font-bold">+20 Max</span></button>
+                <button onclick="startArcadeGame('snake')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🐍 Snake Arcade</span><span class="text-xs text-emerald-400 font-bold">+10 Max</span></button>
+                <button onclick="startArcadeGame('math')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🧮 Speed Math</span><span class="text-xs text-emerald-400 font-bold">+5 Max</span></button>
+                <button onclick="startArcadeGame('guesser')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🔮 Guess Integer</span><span class="text-xs text-emerald-400 font-bold">+5 Max</span></button>
               </div>
-              <div class="lg:col-span-3 bg-[#121214] border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center min-h-[400px] relative" id="game-canvas-container">
-                <p class="text-zinc-500 text-sm">Select an arcade card game from the list to launch terminal engine.</p>
+              <div class="lg:col-span-3 bg-[#121214] border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center min-h-[400px]" id="game-canvas-container">
+                <p class="text-zinc-500 text-sm">Select an arcade sequence to test system balance controls.</p>
               </div>
             </div>
           </div>
@@ -198,8 +192,8 @@
             <div id="messages-window" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
             <footer class="p-4 bg-zinc-900/30 border-t border-zinc-900">
               <form onsubmit="sendMessage(event)" class="flex space-x-3 max-w-5xl mx-auto items-center">
-                <input type="text" id="msg-input" autocomplete="off" placeholder="Type a message to generate currency..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
-                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 px-5 py-3 rounded-xl text-sm font-bold shadow-md">Send (+15🪙)</button>
+                <input type="text" id="msg-input" autocomplete="off" placeholder="Message lounge channel..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 px-5 py-3 rounded-xl text-sm font-bold shadow-md">Send (+3🪙)</button>
               </form>
             </footer>
           </div>
@@ -211,18 +205,17 @@
 
   <script>
     let activeUser = "Admin", activeRoom = "";
-    let currentCoins = 3015;
+    let currentCoins = 150;
     let purchasedPerks = [];
     let currentThemeColor = "text-zinc-300";
     let activeTag = "Member";
 
     const shopInventory = [
-      { id: 'tag_mod', title: 'Moderator Badge Tag', desc: 'Appends a verification tag next to chat handles.', cost: 300, type: 'tag', val: 'MOD' },
-      { id: 'tag_vip', title: 'VIP Exclusive Badge Tag', desc: 'Appends a VIP tag next to user chat logs.', cost: 600, type: 'tag', val: 'VIP' },
-      { id: 'tag_god', title: 'Network God Custom Title', desc: 'Unlocks a special high-tier rank text title.', cost: 1500, type: 'tag', val: 'GOD' },
-      { id: 'col_emerald', title: 'Emerald Username Flare', desc: 'Gives your username a bright emerald green tint.', cost: 400, type: 'color', val: 'text-emerald-400 font-bold' },
-      { id: 'col_cyan', title: 'Vaporwave Cyan Username', desc: 'Gives your username a bright glowing cyan tint.', cost: 800, type: 'color', val: 'text-cyan-400 font-bold' },
-      { id: 'col_amber', title: 'Gold Champion Username', desc: 'Gives your username a luxurious golden glow.', cost: 2000, type: 'color', val: 'text-amber-400 font-extrabold animate-pulse' }
+      { id: 't_mod', title: 'Moderator Badge Tag', desc: 'Appends a Verification layout tag next to handles.', cost: 80, type: 'tag', val: 'MOD' },
+      { id: 't_vip', title: 'VIP Diamond Badge Tag', desc: 'Unlocks a rare neon glowing community status item.', cost: 200, type: 'tag', val: 'VIP' },
+      { id: 'c_emerald', title: 'Emerald Username Glow', desc: 'Tints your username in an elegant matrix green hue.', cost: 100, type: 'color', val: 'text-emerald-400 font-semibold' },
+      { id: 'c_cyan', title: 'Neon Cyan Accent', desc: 'Colors your display tags vibrant cyan.', cost: 175, type: 'color', val: 'text-cyan-400 font-bold' },
+      { id: 'c_gold', title: 'Golden Rank Aura', desc: 'Pulsates username letters in an premium luxury gold color.', cost: 500, type: 'color', val: 'text-amber-400 font-black animate-pulse' }
     ];
 
     function toggleAuthScreens(screen) {
@@ -233,6 +226,26 @@
         document.getElementById('signup-interface').classList.add('hidden');
         document.getElementById('login-interface').classList.remove('hidden');
       }
+    }
+
+    async function handleGoogleLogin() {
+      const chosenName = prompt("Enter username handle to associate with Google account link:");
+      if (chosenName === null) return; 
+      const cleanName = chosenName.trim() || "GoogleUser_" + Math.floor(Math.random()*900+100);
+
+      try {
+        const res = await fetch('/api/google-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chosenName: cleanName })
+        });
+        const data = await res.json();
+        if (data.success) {
+          activeUser = data.username;
+          currentCoins = data.coins;
+          launchDashboard();
+        }
+      } catch (err) { alert("Google connection error."); }
     }
 
     async function handleSignup(e) {
@@ -257,21 +270,7 @@
         const data = await res.json();
         if (data.success) { activeUser = data.username; currentCoins = data.coins; launchDashboard(); }
         else { alert(data.message); }
-      } catch (err) { alert("Login error."); }
-    }
-
-    async function bypassAuth(type) {
-      try {
-        const url = type === "GoogleUser" ? '/api/google-login' : '/api/login';
-        const bodyData = type === "GoogleUser" ? {} : { usernameOrEmail: "Admin", password: "password123" };
-        const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bodyData) });
-        const data = await res.json();
-        if (data.success) { activeUser = data.username; currentCoins = data.coins; launchDashboard(); }
-      } catch (err) {
-        activeUser = "Guest_" + Math.floor(Math.random()*900+100);
-        currentCoins = 250;
-        launchDashboard();
-      }
+      } catch (err) { alert("Authentication error."); }
     }
 
     function launchDashboard() {
@@ -284,7 +283,9 @@
       syncRoomsList();
       renderShopItems();
       showHomeView();
-      setInterval(() => { updateCoinsBalance(5); }, 10000); // Passive gain
+      
+      // Rebalanced passive gain: +2 coins every 30 seconds
+      setInterval(() => { updateCoinsBalance(2); }, 30000);
     }
 
     function resetViews() {
@@ -292,9 +293,9 @@
       document.getElementById('shop-view-panel').classList.add('hidden');
       document.getElementById('arcade-view-panel').classList.add('hidden');
       document.getElementById('chat-view-panel').classList.add('hidden');
-      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
-      document.getElementById('btn-nav-shop').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
-      document.getElementById('btn-nav-arcade').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
+      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 flex items-center space-x-3";
+      document.getElementById('btn-nav-shop').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 flex items-center space-x-3";
+      document.getElementById('btn-nav-arcade').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 flex items-center space-x-3";
     }
 
     function showHomeView() {
@@ -308,14 +309,12 @@
       resetViews(); activeRoom = "";
       document.getElementById('shop-view-panel').classList.remove('hidden');
       document.getElementById('btn-nav-shop').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
-      syncRoomsList();
     }
 
     function showArcadeView() {
       resetViews(); activeRoom = "";
       document.getElementById('arcade-view-panel').classList.remove('hidden');
       document.getElementById('btn-nav-arcade').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
-      syncRoomsList();
     }
 
     async function updateCoinsBalance(amount) {
@@ -325,9 +324,9 @@
     }
 
     function claimDailyCoins() {
-      updateCoinsBalance(100);
+      updateCoinsBalance(25);
       const btn = document.getElementById('daily-claim-btn');
-      btn.disabled = true; btn.innerText = "Claimed Today";
+      btn.disabled = true; btn.innerText = "Claimed";
       btn.className = "w-full bg-zinc-900 text-zinc-600 py-2.5 px-4 rounded-xl text-sm border border-zinc-800 cursor-not-allowed";
     }
 
@@ -337,9 +336,9 @@
       shopInventory.forEach(item => {
         const owned = purchasedPerks.includes(item.id);
         const btnHtml = owned 
-          ? `<button class="w-full bg-zinc-900 text-zinc-600 font-medium py-2 rounded-xl border border-zinc-800 text-xs cursor-not-allowed">Equipped</button>`
-          : `<button onclick="buyPerk('${item.id}', ${item.cost})" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2 rounded-xl transition text-xs shadow">Buy Perk</button>`;
-        grid.innerHTML += `<div class="bg-[#121214] border border-zinc-800 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg"><div><h4 class="font-bold text-sm text-zinc-200">${item.title}</h4><p class="text-xs text-zinc-500 mt-1">${item.desc}</p></div><div class="space-y-2"><div class="text-xs text-amber-400 font-semibold bg-amber-950/20 px-2 py-1 rounded border border-amber-900/40 w-fit">🪙 ${item.cost} Coins</div>${btnHtml}</div></div>`;
+          ? `<button class="w-full bg-zinc-900 text-zinc-600 font-medium py-2 rounded-xl border border-zinc-800 text-xs cursor-not-allowed">Active Modifier</button>`
+          : `<button onclick="buyPerk('${item.id}', ${item.cost})" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2 rounded-xl transition text-xs">Purchase perk</button>`;
+        grid.innerHTML += `<div class="bg-[#121214] border border-zinc-800 p-5 rounded-2xl flex flex-col justify-between space-y-4"><div><h4 class="font-bold text-sm text-zinc-200">${item.title}</h4><p class="text-xs text-zinc-500 mt-1">${item.desc}</p></div><div class="space-y-2"><div class="text-xs text-amber-400 font-semibold bg-amber-950/20 px-2 py-1 rounded border border-amber-900/40 w-fit">🪙 ${item.cost}</div>${btnHtml}</div></div>`;
       });
     }
 
@@ -348,14 +347,9 @@
       purchasedPerks.push(id);
       updateCoinsBalance(-cost);
       const meta = shopInventory.find(i => i.id === id);
-      if (meta.type === 'tag') {
-        activeTag = meta.val;
-        document.getElementById('status-tag-perk').innerText = `${meta.val} Member`;
-      } else if (meta.type === 'color') {
-        currentThemeColor = meta.val;
-      }
+      if (meta.type === 'tag') { activeTag = meta.val; document.getElementById('status-tag-perk').innerText = `${meta.val} Member`; }
+      else if (meta.type === 'color') { currentThemeColor = meta.val; }
       renderShopItems();
-      alert("Perk unlocked and active!");
     }
 
     async function syncRoomsList() {
@@ -386,16 +380,15 @@
 
     async function createRoom() {
       const name = prompt("Enter room name:"); if (!name) return;
-      const desc = prompt("Enter room description:") || "Custom lounge.";
+      const desc = prompt("Enter description:") || "Custom group room lounge channel.";
       const res = await fetch('/api/rooms', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, desc }) });
       const data = await res.json();
       if (data.success) switchRoom(name.toLowerCase().replace(/[^a-z0-9]/g, ''));
-      else alert(data.message);
     }
 
     async function deleteRoom(e, roomId) {
       e.stopPropagation();
-      if (!confirm("Delete this lobby channels logs?")) return;
+      if (!confirm("Are you sure you want to delete this chat channel?")) return;
       const res = await fetch(`/api/rooms/${roomId}`, { method: 'DELETE' });
       const data = await res.json();
       if (data.success) { if (activeRoom === roomId) showHomeView(); else syncRoomsList(); }
@@ -420,48 +413,39 @@
       const input = document.getElementById('msg-input');
       const text = input.value.trim(); if (!text) return;
       await fetch('/api/messages', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender: activeUser, text, room: activeRoom }) });
-      input.value = ''; loadMessages(); updateCoinsBalance(15);
+      input.value = ''; loadMessages(); 
+      updateCoinsBalance(3); // Balanced message reward rate
     }
 
-    // GAME INTERFACE MINIGAMES SYSTEM Engine
     function startArcadeGame(gameType) {
       const container = document.getElementById('game-canvas-container');
       container.innerHTML = '';
 
       if (gameType === 'math') {
-        let num1 = Math.floor(Math.random()*12+2), num2 = Math.floor(Math.random()*12+2), ans = num1 * num2;
-        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Speed Math</h3><p class="text-2xl font-black text-white">${num1} × ${num2} = ?</p><input type="number" id="math-ans" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl focus:outline-none focus:border-emerald-500 text-white w-32"><button onclick="checkMathAns(${ans})" class="block mx-auto bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Submit Answer</button></div>`;
+        let num1 = Math.floor(Math.random()*8+2), num2 = Math.floor(Math.random()*7+2), ans = num1 * num2;
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Speed Math</h3><p class="text-2xl font-black text-white">${num1} × ${num2} = ?</p><input type="number" id="math-ans" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl text-white w-32 block mx-auto focus:outline-none"><button onclick="checkMathAns(${ans})" class="bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Submit</button></div>`;
       } 
       else if (gameType === 'guesser') {
-        let target = Math.floor(Math.random()*10+1);
-        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Number Guesser (1 - 10)</h3><p class="text-xs text-zinc-500">Guess the correct secret integer variant</p><input type="number" id="guess-input" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl focus:outline-none focus:border-emerald-500 text-white w-32"><button onclick="checkGuessAns(${target})" class="block mx-auto bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Guess</button></div>`;
-      }
-      else if (gameType === 'memory') {
-        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Memory Match</h3><p class="text-xs text-zinc-400 mb-2">Click the matching sequence layout blocks</p><div class="grid grid-cols-2 gap-3 w-40 mx-auto"><button onclick="triggerMemoryWin(1)" class="p-6 bg-zinc-800 rounded-xl hover:bg-zinc-700 border border-zinc-700 text-sm">Card A</button><button onclick="triggerMemoryWin(2)" class="p-6 bg-zinc-800 rounded-xl hover:bg-zinc-700 border border-zinc-700 text-sm">Card B</button></div></div>`;
+        let target = Math.floor(Math.random()*5+1);
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Number Guesser (1 - 5)</h3><input type="number" id="guess-input" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl text-white w-32 block mx-auto focus:outline-none"><button onclick="checkGuessAns(${target})" class="bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Guess</button></div>`;
       }
       else if (gameType === 'snake') {
-        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Classic Snake</h3><p class="text-xs text-zinc-500">Control the terminal grid node feed loop parameters</p><button onclick="updateCoinsBalance(50); startArcadeGame('snake');" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-3 px-6 rounded-xl text-xs transition shadow-md">Simulate Full Run (+50🪙)</button></div>`;
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Snake Emulator</h3><p class="text-xs text-zinc-500">Run safe automated terminal cycle tests.</p><button onclick="updateCoinsBalance(10); startArcadeGame('snake');" class="bg-emerald-600 text-zinc-950 font-bold py-3 px-6 rounded-xl text-xs">Run Run Loop Cycle (+10🪙)</button></div>`;
       }
     }
 
     function checkMathAns(correctValue) {
       const userVal = parseInt(document.getElementById('math-ans').value);
-      if (userVal === correctValue) { updateCoinsBalance(30); alert("Correct! +30 Coins loaded."); } 
-      else { alert("Incorrect calculation parameter."); }
+      if (userVal === correctValue) { updateCoinsBalance(5); alert("Correct! +5 Coins."); } 
+      else { alert("Incorrect."); }
       startArcadeGame('math');
     }
 
     function checkGuessAns(targetValue) {
       const userVal = parseInt(document.getElementById('guess-input').value);
-      if (userVal === targetValue) { updateCoinsBalance(20); alert("Perfect Prediction! +20 Coins added."); } 
-      else { alert(`Wrong! The target answer code sequence was ${targetValue}`); }
+      if (userVal === targetValue) { updateCoinsBalance(5); alert("Correct! +5 Coins."); } 
+      else { alert(`Target integer sequence was ${targetValue}`); }
       startArcadeGame('guesser');
-    }
-
-    function triggerMemoryWin(cardNum) {
-      updateCoinsBalance(40);
-      alert("Sequence Matched completely! +40 Coins added.");
-      startArcadeGame('memory');
     }
 
     setInterval(loadMessages, 2000);
