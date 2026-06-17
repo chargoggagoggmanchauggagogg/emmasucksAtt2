@@ -7,14 +7,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
-// Internal Data Storage (Resets when server restarts)
+// Internal Memory Database
 const usersDatabase = [
-  { username: 'Admin', email: 'admin@example.com', password: 'password123', coins: 3015, inventory: [] }
+  { username: 'Admin', email: 'admin@example.com', password: 'password123', coins: 150, inventory: [] }
 ];
 
 let globalMessages = [
-  { sender: 'System', text: 'Welcome to the network room!', room: 'stellalovesgraves', timestamp: Date.now() },
-  { sender: 'System', text: 'Development mod terminal channel ready.', room: 'testchatformods', timestamp: Date.now() }
+  { sender: 'System', text: 'Welcome to the network room!', room: 'stellalovesgraves', timestamp: Date.now() }
 ];
 
 let customRooms = [
@@ -27,10 +26,10 @@ app.post('/api/signup', (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) return res.status(400).json({ success: false, message: 'Missing fields.' });
   
-  const match = usersDatabase.find(u => u.username.toLowerCase() === username.toLowerCase() || u.email.toLowerCase() === email.toLowerCase());
-  if (match) return res.status(400).json({ success: false, message: 'Account credentials already occupied.' });
+  const match = usersDatabase.find(u => u.username.toLowerCase() === username.toLowerCase());
+  if (match) return res.status(400).json({ success: false, message: 'Username already taken.' });
   
-  const newUser = { username, email, password, coins: 500, inventory: [] };
+  const newUser = { username, email, password, coins: 50, inventory: [] };
   usersDatabase.push(newUser);
   return res.json({ success: true, username: newUser.username, coins: newUser.coins });
 });
@@ -42,16 +41,20 @@ app.post('/api/login', (req, res) => {
   return res.json({ success: true, username: user.username, coins: user.coins });
 });
 
+// Google Login with Custom Handle
 app.post('/api/google-login', (req, res) => {
-  let user = usersDatabase.find(u => u.username === "GoogleUser");
+  const { chosenName } = req.body;
+  const username = chosenName || "GoogleUser_" + Math.floor(Math.random() * 900 + 100);
+  
+  let user = usersDatabase.find(u => u.username.toLowerCase() === username.toLowerCase());
   if (!user) {
-    user = { username: "GoogleUser", email: "google@network.internal", password: "google-verified", coins: 1000, inventory: [] };
+    user = { username, email: `${username}@google.internal`, password: 'google-oauth-verified', coins: 100, inventory: [] };
     usersDatabase.push(user);
   }
   return res.json({ success: true, username: user.username, coins: user.coins });
 });
 
-// Update Coins balance securely
+// Sync Coins Balance
 app.post('/api/user/sync-coins', (req, res) => {
   const { username, coins } = req.body;
   const user = usersDatabase.find(u => u.username === username);
@@ -62,12 +65,12 @@ app.post('/api/user/sync-coins', (req, res) => {
   return res.status(404).json({ success: false, message: "User not found." });
 });
 
-// Room Endpoints
+// Lobbies
 app.get('/api/rooms', (req, res) => res.json(customRooms));
 app.post('/api/rooms', (req, res) => {
   const { name, desc } = req.body;
   const id = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-  if (customRooms.find(r => r.id === id)) return res.status(400).json({ success: false, message: "Lobby label registered already." });
+  if (customRooms.find(r => r.id === id)) return res.status(400).json({ success: false, message: "Room already exists." });
   customRooms.push({ id, name, desc });
   return res.json({ success: true, rooms: customRooms });
 });
@@ -78,7 +81,7 @@ app.delete('/api/rooms/:id', (req, res) => {
   return res.json({ success: true, rooms: customRooms });
 });
 
-// Messaging Endpoints
+// Messaging
 app.get('/api/messages', (req, res) => res.json(globalMessages));
 app.post('/api/messages', (req, res) => {
   const { sender, text, room } = req.body;
@@ -87,4 +90,4 @@ app.post('/api/messages', (req, res) => {
 });
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server live on port ${PORT}`));
