@@ -30,17 +30,16 @@
         <form onsubmit="handleAuth(event)" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Email or Username</label>
-            <input type="text" id="auth-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+            <input type="text" id="auth-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
           <div>
-            <div class="flex justify-between items-baseline mb-2"><label class="block text-sm font-semibold text-zinc-300">Password</label></div>
-            <input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+            <label class="block text-sm font-semibold text-zinc-300 mb-2">Password</label>
+            <input type="password" id="auth-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
-          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-xl text-sm font-bold text-zinc-950 tracking-wide mt-2 shadow-lg">Log in</button>
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-xl text-sm font-bold text-zinc-950 mt-2 shadow-lg">Log in</button>
         </form>
-        <div class="pt-2"><button onclick="bypassAuth('GuestUser')" class="w-full flex items-center justify-center space-x-2 bg-transparent text-emerald-400 hover:text-emerald-300 transition py-1 rounded-xl text-sm font-medium"><span>Continue as guest</span></button></div>
       </div>
-      <div class="text-center text-sm text-zinc-500"><span>Don't have an account?</span><button onclick="toggleAuthScreens('signup')" class="text-emerald-400 font-semibold ml-1 hover:underline">Create one</button></div>
+      <div class="text-center text-sm text-zinc-500">Don't have an account?<button onclick="toggleAuthScreens('signup')" class="text-emerald-400 font-semibold ml-1 hover:underline">Create one</button></div>
     </div>
 
     <div id="signup-interface" class="hidden w-full max-w-md flex flex-col items-center space-y-6 mx-4">
@@ -51,37 +50,29 @@
       </div>
       <div class="text-center space-y-1">
         <h1 class="text-3xl font-bold tracking-tight text-white">Create account</h1>
-        <p class="text-sm text-zinc-400">Join the chat community today</p>
       </div>
       <div class="w-full bg-[#121214] border border-zinc-800/80 rounded-2xl p-6 shadow-2xl flex flex-col space-y-5">
-        <button onclick="bypassAuth('GoogleUser')" class="w-full flex items-center justify-center space-x-3 bg-transparent border border-zinc-800 hover:bg-zinc-900 transition py-3 rounded-xl text-sm font-medium text-zinc-200">
-          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/></svg>
-          <span>Continue with Google</span>
-        </button>
-        <div class="relative flex py-1 items-center"><div class="flex-grow border-t border-zinc-800/40"></div><span class="flex-shrink mx-4 text-xs font-semibold text-zinc-600 uppercase tracking-widest">or</span><div class="flex-grow border-t border-zinc-800/40"></div></div>
         <form onsubmit="handleSignup(event)" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Username</label>
-            <input type="text" id="signup-username" placeholder="Choose a username" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+            <input type="text" id="signup-username" placeholder="Choose a username" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
           <div>
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Email Address</label>
-            <input type="email" id="signup-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+            <input type="email" id="signup-email" placeholder="you@example.com" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
           <div>
             <label class="block text-sm font-semibold text-zinc-300 mb-2">Password</label>
-            <input type="password" id="signup-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none transition placeholder-zinc-700 text-zinc-200" required>
+            <input type="password" id="signup-password" placeholder="••••••••" class="w-full bg-transparent border border-zinc-800 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm focus:outline-none text-zinc-200" required>
           </div>
-          
           <div class="flex items-center space-x-3 bg-zinc-900/50 p-3 rounded-xl border border-zinc-800/60 my-2">
-            <input type="checkbox" id="signup-captcha" class="w-4 h-4 accent-emerald-500 bg-zinc-950 border-zinc-800 rounded focus:ring-0 cursor-pointer" required>
+            <input type="checkbox" id="signup-captcha" class="w-4 h-4 accent-emerald-500 bg-zinc-950 rounded cursor-pointer" required>
             <label for="signup-captcha" class="text-sm font-medium text-zinc-400 select-none cursor-pointer">I am not a bot</label>
           </div>
-
-          <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 transition py-3 rounded-xl text-sm font-bold text-zinc-950 tracking-wide mt-2 shadow-lg">Sign up</button>
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-xl text-sm font-bold text-zinc-950 mt-2 shadow-lg">Sign up</button>
         </form>
       </div>
-      <div class="text-center text-sm text-zinc-500"><span>Already have an account?</span><button onclick="toggleAuthScreens('login')" class="text-emerald-400 font-semibold ml-1 hover:underline">Log in</button></div>
+      <div class="text-center text-sm text-zinc-500">Already have an account?<button onclick="toggleAuthScreens('login')" class="text-emerald-400 font-semibold ml-1 hover:underline">Log in</button></div>
     </div>
 
     <div id="dashboard-interface" class="hidden w-full h-screen overflow-hidden flex flex-col">
@@ -106,14 +97,22 @@
         <aside class="w-80 bg-zinc-900/40 border-r border-zinc-800 p-4 flex flex-col space-y-4">
           <div>
             <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Navigation</h2>
-            <button onclick="showHomeView()" id="btn-nav-home" class="w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold transition flex items-center space-x-3">
-              <span>🏠</span> <span class="text-sm">Home Hub</span>
-            </button>
+            <div class="space-y-1">
+              <button onclick="showHomeView()" id="btn-nav-home" class="w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3">
+                <span>🏠</span> <span class="text-sm">Home & Daily Reward</span>
+              </button>
+              <button onclick="showShopView()" id="btn-nav-shop" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 border border-transparent text-zinc-400 font-medium flex items-center space-x-3">
+                <span>🛒</span> <span class="text-sm">Perks Shop</span>
+              </button>
+              <button onclick="showArcadeView()" id="btn-nav-arcade" class="w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 border border-transparent text-zinc-400 font-medium flex items-center space-x-3">
+                <span>🎮</span> <span class="text-sm">Game Arcade</span>
+              </button>
+            </div>
           </div>
 
           <div class="flex items-center justify-between pt-2">
             <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Chat Lobbies</h2>
-            <button onclick="createRoom()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 rounded-md">+ New</button>
+            <button onclick="createRoom()" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 bg-emerald-950/30 border border-emerald-900/50 px-2 py-1 rounded-md">+ New</button>
           </div>
           <nav id="lobby-container" class="flex-1 overflow-y-auto space-y-1 pr-1"></nav>
         </aside>
@@ -123,67 +122,68 @@
           <div id="home-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-8 z-20 bg-zinc-950">
             <div class="bg-gradient-to-r from-zinc-900 to-[#121214] border border-zinc-800 p-6 rounded-2xl flex items-center justify-between shadow-xl">
               <div class="space-y-1">
-                <h2 class="text-2xl font-bold tracking-tight text-white">Welcome Home, <span id="home-user-title" class="text-emerald-400">Admin</span>!</h2>
-                <p class="text-sm text-zinc-400">Claim your allowance, chat to earn passive coins, or check out the shop below.</p>
+                <h2 class="text-2xl font-bold tracking-tight text-white">Welcome, <span id="home-user-title" class="text-emerald-400">Admin</span>!</h2>
+                <p class="text-sm text-zinc-400">Earn coins passively by staying online or talking in chat rooms.</p>
               </div>
-              <div id="status-tag-perk" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-xs text-zinc-400 border border-zinc-700">Standard Rank</div>
+              <div id="status-tag-perk" class="px-3 py-1.5 rounded-xl bg-zinc-800 text-xs text-zinc-400 border border-zinc-700">Standard Member</div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
                 <div class="flex items-start justify-between">
-                  <div class="space-y-1">
-                    <h3 class="font-bold text-zinc-200">Daily Reward Check-in</h3>
-                    <p class="text-xs text-zinc-500">Collect your daily currency injection instantly.</p>
+                  <div>
+                    <h3 class="font-bold text-zinc-200">Daily Coins Reward</h3>
+                    <p class="text-xs text-zinc-500">Collect your free allocation of network currency.</p>
                   </div>
                   <span class="text-2xl">🎁</span>
                 </div>
-                <button onclick="claimDailyCoins()" id="daily-claim-btn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2.5 px-4 rounded-xl text-sm transition tracking-wide shadow-md">
+                <button onclick="claimDailyCoins()" id="daily-claim-btn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2.5 px-4 rounded-xl text-sm transition">
                   Claim +100 Coins
                 </button>
               </div>
 
               <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg">
                 <div class="flex items-start justify-between">
-                  <div class="space-y-1">
-                    <h3 class="font-bold text-zinc-200">Passive Miner Monitor</h3>
-                    <p class="text-xs text-zinc-500">Earning rates configured across active systems.</p>
+                  <div>
+                    <h3 class="font-bold text-zinc-200">Earning Multipliers</h3>
+                    <p class="text-xs text-zinc-500">Current network generation parameters.</p>
                   </div>
                   <span class="text-2xl">⚡</span>
                 </div>
                 <div class="space-y-2 text-xs text-zinc-400">
                   <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
-                    <span>Uptime Generation Rate:</span> <span class="text-emerald-400 font-bold">+5 Coins / 10s</span>
+                    <span>Online Allowance Rate:</span> <span class="text-emerald-400 font-bold">+5 Coins / 10s</span>
                   </div>
                   <div class="flex justify-between p-2 bg-zinc-950/60 rounded-xl border border-zinc-900">
-                    <span>Chat Engagement Output:</span> <span class="text-emerald-400 font-bold">+15 Coins / Msg</span>
+                    <span>Chat Engagement Yield:</span> <span class="text-emerald-400 font-bold">+15 Coins / Msg</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="space-y-4">
-              <h3 class="text-lg font-bold tracking-tight text-white flex items-center gap-2"><span>🛒</span> Network Shop</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex items-center justify-between shadow-lg">
-                  <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-zinc-200">Premium Mod Title Tag</h4>
-                    <p class="text-xs text-zinc-500">Unlocks custom rank label display banner.</p>
-                    <span class="inline-block text-[10px] bg-amber-950/40 text-amber-400 font-semibold border border-amber-900/60 rounded px-1.5 py-0.5 mt-1">Cost: 600 Coins</span>
-                  </div>
-                  <button onclick="buyPerk('tag', 600)" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold py-2 px-4 rounded-xl transition border border-zinc-700">Purchase</button>
-                </div>
+          <div id="shop-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-6 z-20 bg-zinc-950 hidden">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-white">Network Shop</h2>
+              <p class="text-sm text-zinc-400">Upgrade your identity aesthetics inside chat lobbies.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="shop-items-grid"></div>
+          </div>
 
-                <div class="bg-[#121214] border border-zinc-800/80 p-5 rounded-2xl flex items-center justify-between shadow-lg">
-                  <div class="space-y-1">
-                    <h4 class="font-bold text-sm text-zinc-200">Emerald Identity Glow Color</h4>
-                    <p class="text-xs text-zinc-500">Transforms text styling on layout chat handles.</p>
-                    <span class="inline-block text-[10px] bg-amber-950/40 text-amber-400 font-semibold border border-amber-900/60 rounded px-1.5 py-0.5 mt-1">Cost: 1200 Coins</span>
-                  </div>
-                  <button onclick="buyPerk('color', 1200)" class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold py-2 px-4 rounded-xl transition border border-zinc-700">Purchase</button>
-                </div>
-
+          <div id="arcade-view-panel" class="absolute inset-0 overflow-y-auto p-8 flex flex-col space-y-6 z-20 bg-zinc-950 hidden">
+            <div>
+              <h2 class="text-2xl font-bold tracking-tight text-white">Arcade Center</h2>
+              <p class="text-sm text-zinc-400">Play integrated minigames to earn currency rewards instantly.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              <div class="lg:col-span-1 bg-[#121214] border border-zinc-800 p-4 rounded-2xl flex flex-col space-y-2 h-fit">
+                <button onclick="startArcadeGame('snake')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🐍 Classic Snake</span><span class="text-xs text-emerald-400 font-bold">+50 Max</span></button>
+                <button onclick="startArcadeGame('memory')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🧠 Memory Match</span><span class="text-xs text-emerald-400 font-bold">+40 Max</span></button>
+                <button onclick="startArcadeGame('math')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🧮 Speed Math</span><span class="text-xs text-emerald-400 font-bold">+30 Max</span></button>
+                <button onclick="startArcadeGame('guesser')" class="w-full text-left p-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 flex items-center justify-between"><span>🔮 Number Guesser</span><span class="text-xs text-emerald-400 font-bold">+20 Max</span></button>
+              </div>
+              <div class="lg:col-span-3 bg-[#121214] border border-zinc-800 p-6 rounded-2xl flex flex-col items-center justify-center min-h-[400px] relative" id="game-canvas-container">
+                <p class="text-zinc-500 text-sm">Select an arcade card game from the list to launch terminal engine.</p>
               </div>
             </div>
           </div>
@@ -192,14 +192,14 @@
             <div class="px-6 py-4 bg-zinc-900/20 border-b border-zinc-900 flex items-center justify-between">
               <div>
                 <h3 id="room-title" class="font-bold text-lg text-zinc-100"># stellalovesgraves</h3>
-                <p id="room-desc" class="text-xs text-emerald-400 mt-0.5">Lobby details parsing placeholder</p>
+                <p id="room-desc" class="text-xs text-emerald-400 mt-0.5"></p>
               </div>
             </div>
             <div id="messages-window" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
             <footer class="p-4 bg-zinc-900/30 border-t border-zinc-900">
               <form onsubmit="sendMessage(event)" class="flex space-x-3 max-w-5xl mx-auto items-center">
-                <input type="text" id="msg-input" autocomplete="off" placeholder="Type messages to generate currency..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
-                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 transition px-5 py-3 rounded-xl text-sm font-bold shadow-md">Send (+15🪙)</button>
+                <input type="text" id="msg-input" autocomplete="off" placeholder="Type a message to generate currency..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-zinc-200">
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 px-5 py-3 rounded-xl text-sm font-bold shadow-md">Send (+15🪙)</button>
               </form>
             </footer>
           </div>
@@ -213,6 +213,17 @@
     let activeUser = "Admin", activeRoom = "";
     let currentCoins = 3015;
     let purchasedPerks = [];
+    let currentThemeColor = "text-zinc-300";
+    let activeTag = "Member";
+
+    const shopInventory = [
+      { id: 'tag_mod', title: 'Moderator Badge Tag', desc: 'Appends a verification tag next to chat handles.', cost: 300, type: 'tag', val: 'MOD' },
+      { id: 'tag_vip', title: 'VIP Exclusive Badge Tag', desc: 'Appends a VIP tag next to user chat logs.', cost: 600, type: 'tag', val: 'VIP' },
+      { id: 'tag_god', title: 'Network God Custom Title', desc: 'Unlocks a special high-tier rank text title.', cost: 1500, type: 'tag', val: 'GOD' },
+      { id: 'col_emerald', title: 'Emerald Username Flare', desc: 'Gives your username a bright emerald green tint.', cost: 400, type: 'color', val: 'text-emerald-400 font-bold' },
+      { id: 'col_cyan', title: 'Vaporwave Cyan Username', desc: 'Gives your username a bright glowing cyan tint.', cost: 800, type: 'color', val: 'text-cyan-400 font-bold' },
+      { id: 'col_amber', title: 'Gold Champion Username', desc: 'Gives your username a luxurious golden glow.', cost: 2000, type: 'color', val: 'text-amber-400 font-extrabold animate-pulse' }
+    ];
 
     function toggleAuthScreens(screen) {
       if (screen === 'signup') {
@@ -226,77 +237,39 @@
 
     async function handleSignup(e) {
       e.preventDefault();
-      if (!document.getElementById('signup-captcha').checked) {
-        alert("Please verify that you are not a bot!");
-        return;
-      }
       const username = document.getElementById('signup-username').value.trim();
       const email = document.getElementById('signup-email').value.trim();
       const password = document.getElementById('signup-password').value;
-
       try {
-        const res = await fetch('/api/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, email, password })
-        });
+        const res = await fetch('/api/signup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username, email, password }) });
         const data = await res.json();
-        if (data.success) {
-          activeUser = data.username;
-          currentCoins = data.coins;
-          launchDashboard();
-        } else {
-          alert(data.message || "Signup logic execution failure");
-        }
-      } catch (err) {
-        alert("Account verification pipeline broken.");
-      }
+        if (data.success) { activeUser = data.username; currentCoins = data.coins; launchDashboard(); }
+        else { alert(data.message); }
+      } catch (err) { alert("Registration failed."); }
     }
 
     async function handleAuth(e) {
       e.preventDefault();
       const usernameOrEmail = document.getElementById('auth-email').value.trim();
       const password = document.getElementById('auth-password').value;
-
       try {
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ usernameOrEmail, password })
-        });
+        const res = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ usernameOrEmail, password }) });
         const data = await res.json();
-        if (data.success) {
-          activeUser = data.username;
-          currentCoins = data.coins;
-          launchDashboard();
-        } else {
-          alert(data.message || "Invalid authentication coordinates");
-        }
-      } catch (err) {
-        alert("Login route verification failed.");
-      }
+        if (data.success) { activeUser = data.username; currentCoins = data.coins; launchDashboard(); }
+        else { alert(data.message); }
+      } catch (err) { alert("Login error."); }
     }
 
     async function bypassAuth(type) {
       try {
         const url = type === "GoogleUser" ? '/api/google-login' : '/api/login';
         const bodyData = type === "GoogleUser" ? {} : { usernameOrEmail: "Admin", password: "password123" };
-        
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(bodyData)
-        });
+        const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bodyData) });
         const data = await res.json();
-        if (data.success) {
-          activeUser = data.username;
-          currentCoins = data.coins;
-          launchDashboard();
-        }
+        if (data.success) { activeUser = data.username; currentCoins = data.coins; launchDashboard(); }
       } catch (err) {
-        // Safe Guest Fallback if network offline
         activeUser = "Guest_" + Math.floor(Math.random()*900+100);
-        currentCoins = 150;
+        currentCoins = 250;
         launchDashboard();
       }
     }
@@ -309,57 +282,80 @@
       document.getElementById('signup-interface').classList.add('hidden');
       document.getElementById('dashboard-interface').classList.remove('hidden');
       syncRoomsList();
+      renderShopItems();
       showHomeView();
-      
-      // Auto-accrual: Generate 5 coins passively every 10 seconds online
-      setInterval(() => {
-        updateCoinsBalance(5);
-      }, 10000);
+      setInterval(() => { updateCoinsBalance(5); }, 10000); // Passive gain
+    }
+
+    function resetViews() {
+      document.getElementById('home-view-panel').classList.add('hidden');
+      document.getElementById('shop-view-panel').classList.add('hidden');
+      document.getElementById('arcade-view-panel').classList.add('hidden');
+      document.getElementById('chat-view-panel').classList.add('hidden');
+      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
+      document.getElementById('btn-nav-shop').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
+      document.getElementById('btn-nav-arcade').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
     }
 
     function showHomeView() {
-      activeRoom = "";
-      document.getElementById('chat-view-panel').classList.add('hidden');
+      resetViews(); activeRoom = "";
       document.getElementById('home-view-panel').classList.remove('hidden');
       document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
+      syncRoomsList();
+    }
+
+    function showShopView() {
+      resetViews(); activeRoom = "";
+      document.getElementById('shop-view-panel').classList.remove('hidden');
+      document.getElementById('btn-nav-shop').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
+      syncRoomsList();
+    }
+
+    function showArcadeView() {
+      resetViews(); activeRoom = "";
+      document.getElementById('arcade-view-panel').classList.remove('hidden');
+      document.getElementById('btn-nav-arcade').className = "w-full text-left p-3 rounded-xl bg-zinc-800/80 border border-zinc-700 text-emerald-400 font-semibold flex items-center space-x-3";
       syncRoomsList();
     }
 
     async function updateCoinsBalance(amount) {
       currentCoins += amount;
       document.getElementById('coin-count').innerText = currentCoins;
-      await fetch('/api/user/sync-coins', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: activeUser, coins: currentCoins })
-      });
+      await fetch('/api/user/sync-coins', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: activeUser, coins: currentCoins }) });
     }
 
     function claimDailyCoins() {
       updateCoinsBalance(100);
       const btn = document.getElementById('daily-claim-btn');
-      btn.disabled = true;
-      btn.innerText = "Claimed for Today";
-      btn.className = "w-full bg-zinc-900 text-zinc-600 font-medium py-2.5 px-4 rounded-xl text-sm border border-zinc-800 cursor-not-allowed transition";
+      btn.disabled = true; btn.innerText = "Claimed Today";
+      btn.className = "w-full bg-zinc-900 text-zinc-600 py-2.5 px-4 rounded-xl text-sm border border-zinc-800 cursor-not-allowed";
     }
 
-    function buyPerk(perkType, price) {
-      if (purchasedPerks.includes(perkType)) {
-        alert("This account item modifier is active.");
-        return;
+    function renderShopItems() {
+      const grid = document.getElementById('shop-items-grid');
+      grid.innerHTML = '';
+      shopInventory.forEach(item => {
+        const owned = purchasedPerks.includes(item.id);
+        const btnHtml = owned 
+          ? `<button class="w-full bg-zinc-900 text-zinc-600 font-medium py-2 rounded-xl border border-zinc-800 text-xs cursor-not-allowed">Equipped</button>`
+          : `<button onclick="buyPerk('${item.id}', ${item.cost})" class="w-full bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-2 rounded-xl transition text-xs shadow">Buy Perk</button>`;
+        grid.innerHTML += `<div class="bg-[#121214] border border-zinc-800 p-5 rounded-2xl flex flex-col justify-between space-y-4 shadow-lg"><div><h4 class="font-bold text-sm text-zinc-200">${item.title}</h4><p class="text-xs text-zinc-500 mt-1">${item.desc}</p></div><div class="space-y-2"><div class="text-xs text-amber-400 font-semibold bg-amber-950/20 px-2 py-1 rounded border border-amber-900/40 w-fit">🪙 ${item.cost} Coins</div>${btnHtml}</div></div>`;
+      });
+    }
+
+    function buyPerk(id, cost) {
+      if (currentCoins < cost) { alert("Insufficient coin balance."); return; }
+      purchasedPerks.push(id);
+      updateCoinsBalance(-cost);
+      const meta = shopInventory.find(i => i.id === id);
+      if (meta.type === 'tag') {
+        activeTag = meta.val;
+        document.getElementById('status-tag-perk').innerText = `${meta.val} Member`;
+      } else if (meta.type === 'color') {
+        currentThemeColor = meta.val;
       }
-      if (currentCoins < price) {
-        alert("Insufficient network balance for purchase.");
-        return;
-      }
-      purchasedPerks.push(perkType);
-      updateCoinsBalance(-price);
-      
-      if (perkType === 'tag') {
-        document.getElementById('status-tag-perk').innerText = "Premium Rank Member";
-        document.getElementById('status-tag-perk').className = "px-3 py-1.5 rounded-xl bg-emerald-950 text-xs text-emerald-400 border border-emerald-800";
-      }
-      alert("Upgrade acquired successfully!");
+      renderShopItems();
+      alert("Perk unlocked and active!");
     }
 
     async function syncRoomsList() {
@@ -369,118 +365,103 @@
         const container = document.getElementById('lobby-container');
         container.innerHTML = '';
         rooms.forEach(room => {
-          const wrapper = document.createElement('div');
-          wrapper.className = "group w-full relative flex items-center justify-between rounded-xl hover:bg-zinc-800/40 p-1 pr-3 transition";
-          
-          const btn = document.createElement('button');
-          btn.className = "flex-1 text-left p-2 flex flex-col space-y-0.5 overflow-hidden";
-          btn.onclick = () => switchRoom(room.id);
-          
-          const isActive = (room.id === activeRoom);
-          const nameColor = isActive ? "text-emerald-400 font-bold" : "text-zinc-300 font-semibold group-hover:text-zinc-100";
-          
-          btn.innerHTML = `<span class="text-sm truncate ${nameColor}"># ${room.name}</span><span class="text-[11px] text-zinc-500 truncate">${room.desc}</span>`;
-          wrapper.appendChild(btn);
-          
-          // Delete function access layout configurations
-          const delBtn = document.createElement('button');
-          delBtn.className = "opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 font-bold text-xs p-1 rounded transition ml-2 z-30";
-          delBtn.innerHTML = "✕";
-          delBtn.onclick = (e) => {
-            e.stopPropagation();
-            deleteRoom(room.id);
-          };
-          wrapper.appendChild(delBtn);
-          
-          if (isActive) wrapper.classList.add("bg-zinc-900", "border", "border-zinc-800");
-          container.appendChild(wrapper);
+          const div = document.createElement('div');
+          div.className = `group flex items-center justify-between rounded-xl p-1 pr-3 transition ${room.id === activeRoom ? 'bg-zinc-900 border border-zinc-800' : 'hover:bg-zinc-800/40'}`;
+          div.innerHTML = `<button onclick="switchRoom('${room.id}')" class="flex-1 text-left p-2 overflow-hidden"><span class="text-sm truncate block ${room.id === activeRoom ? 'text-emerald-400 font-bold' : 'text-zinc-300'}"># ${room.name}</span><span class="text-[11px] text-zinc-500 truncate block">${room.desc}</span></button><button onclick="deleteRoom(event, '${room.id}')" class="opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 text-xs p-1 transition ml-2">✕</button>`;
+          container.appendChild(div);
         });
-      } catch (err) { console.error("Rooms syncing broken", err); }
+      } catch (err) {}
     }
 
     function switchRoom(roomId) {
-      activeRoom = roomId;
-      document.getElementById('home-view-panel').classList.add('hidden');
+      resetViews(); activeRoom = roomId;
       document.getElementById('chat-view-panel').classList.remove('hidden');
-      document.getElementById('btn-nav-home').className = "w-full text-left p-3 rounded-xl hover:bg-zinc-800/40 text-zinc-400 transition flex items-center space-x-3";
-      
       syncRoomsList();
-      
       fetch('/api/rooms').then(r => r.json()).then(rooms => {
-        const current = rooms.find(r => r.id === roomId);
-        if (current) {
-          document.getElementById('room-title').innerText = `# ${current.name}`;
-          document.getElementById('room-desc').innerText = current.desc;
-        }
+        const match = rooms.find(r => r.id === roomId);
+        if (match) { document.getElementById('room-title').innerText = `# ${match.name}`; document.getElementById('room-desc').innerText = match.desc; }
       });
       loadMessages();
     }
 
     async function createRoom() {
-      const name = prompt("Enter new chat lobby name:"); if (!name) return;
-      const desc = prompt("Enter lobby description:") || "Custom lounge channel.";
-      try {
-        const res = await fetch('/api/rooms', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, desc })
-        });
-        const data = await res.json();
-        if (data.success) {
-          const cleanId = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-          switchRoom(cleanId);
-        } else { alert(data.message); }
-      } catch (err) { console.error(err); }
+      const name = prompt("Enter room name:"); if (!name) return;
+      const desc = prompt("Enter room description:") || "Custom lounge.";
+      const res = await fetch('/api/rooms', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, desc }) });
+      const data = await res.json();
+      if (data.success) switchRoom(name.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      else alert(data.message);
     }
 
-    async function deleteRoom(roomId) {
-      if (!confirm("Are you sure you want to delete this chat room and its logs?")) return;
-      try {
-        const res = await fetch(`/api/rooms/${roomId}`, { method: 'DELETE' });
-        const data = await res.json();
-        if (data.success) {
-          if (activeRoom === roomId) showHomeView();
-          else syncRoomsList();
-        }
-      } catch (err) { console.error(err); }
+    async function deleteRoom(e, roomId) {
+      e.stopPropagation();
+      if (!confirm("Delete this lobby channels logs?")) return;
+      const res = await fetch(`/api/rooms/${roomId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) { if (activeRoom === roomId) showHomeView(); else syncRoomsList(); }
     }
 
     async function loadMessages() {
-      if (!activeRoom || document.getElementById('dashboard-interface').classList.contains('hidden')) return;
-      try {
-        const res = await fetch('/api/messages');
-        const data = await res.json();
-        const filtered = data.filter(m => m.room === activeRoom);
-        const win = document.getElementById('messages-window');
-        win.innerHTML = '';
-        filtered.forEach(msg => {
-          const isMsgPremium = msg.sender === "GoogleUser" || msg.sender === "Admin";
-          const colorClass = isMsgPremium ? "text-emerald-400 font-bold" : "text-zinc-400 font-semibold";
-          const tagLabel = isMsgPremium ? `<span class="text-[9px] bg-emerald-950 text-emerald-400 border border-emerald-800 px-1 rounded">PRO</span>` : '';
-          
-          const div = document.createElement('div'); div.className = "flex flex-col space-y-1 max-w-3xl mb-3";
-          div.innerHTML = `<div class="flex items-center space-x-2">${tagLabel}<span class="text-sm ${colorClass}">${msg.sender}</span><span class="text-[10px] text-zinc-500">${new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span></div><div class="bg-zinc-900 border border-zinc-800 px-4 py-2.5 rounded-2xl rounded-tl-none text-sm shadow-sm text-zinc-200">${msg.text}</div>`;
-          win.appendChild(div);
-        });
-        win.scrollTop = win.scrollHeight;
-      } catch (err) { console.error(err); }
+      if (!activeRoom || document.getElementById('chat-view-panel').classList.contains('hidden')) return;
+      const res = await fetch('/api/messages');
+      const data = await res.json();
+      const win = document.getElementById('messages-window');
+      win.innerHTML = '';
+      data.filter(m => m.room === activeRoom).forEach(msg => {
+        const dynamicStyle = msg.sender === activeUser ? currentThemeColor : "text-zinc-400 font-semibold";
+        const customBadge = msg.sender === activeUser ? `<span class="text-[9px] bg-emerald-950 text-emerald-400 border border-emerald-800 px-1 rounded">${activeTag}</span>` : '';
+        win.innerHTML += `<div class="flex flex-col mb-3"><div class="flex items-center space-x-2">${customBadge}<span class="text-sm ${dynamicStyle}">${msg.sender}</span><span class="text-[10px] text-zinc-500">${new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</span></div><div class="bg-zinc-900 border border-zinc-800 px-4 py-2.5 rounded-2xl rounded-tl-none text-sm text-zinc-200 mt-1 shadow-sm">${msg.text}</div></div>`;
+      });
+      win.scrollTop = win.scrollHeight;
     }
 
     async function sendMessage(e) {
       e.preventDefault();
       const input = document.getElementById('msg-input');
-      const text = input.value.trim();
-      if (!text) return;
-      try {
-        await fetch('/api/messages', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sender: activeUser, text: text, room: activeRoom })
-        });
-        input.value = '';
-        loadMessages();
-        updateCoinsBalance(15); // Gives 15 coins for every message sent
-      } catch (err) { console.error(err); }
+      const text = input.value.trim(); if (!text) return;
+      await fetch('/api/messages', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sender: activeUser, text, room: activeRoom }) });
+      input.value = ''; loadMessages(); updateCoinsBalance(15);
+    }
+
+    // GAME INTERFACE MINIGAMES SYSTEM Engine
+    function startArcadeGame(gameType) {
+      const container = document.getElementById('game-canvas-container');
+      container.innerHTML = '';
+
+      if (gameType === 'math') {
+        let num1 = Math.floor(Math.random()*12+2), num2 = Math.floor(Math.random()*12+2), ans = num1 * num2;
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Speed Math</h3><p class="text-2xl font-black text-white">${num1} × ${num2} = ?</p><input type="number" id="math-ans" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl focus:outline-none focus:border-emerald-500 text-white w-32"><button onclick="checkMathAns(${ans})" class="block mx-auto bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Submit Answer</button></div>`;
+      } 
+      else if (gameType === 'guesser') {
+        let target = Math.floor(Math.random()*10+1);
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Number Guesser (1 - 10)</h3><p class="text-xs text-zinc-500">Guess the correct secret integer variant</p><input type="number" id="guess-input" class="bg-zinc-900 border border-zinc-800 px-4 py-2 text-center rounded-xl focus:outline-none focus:border-emerald-500 text-white w-32"><button onclick="checkGuessAns(${target})" class="block mx-auto bg-emerald-600 text-zinc-950 font-bold px-6 py-2 rounded-xl text-sm">Guess</button></div>`;
+      }
+      else if (gameType === 'memory') {
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Memory Match</h3><p class="text-xs text-zinc-400 mb-2">Click the matching sequence layout blocks</p><div class="grid grid-cols-2 gap-3 w-40 mx-auto"><button onclick="triggerMemoryWin(1)" class="p-6 bg-zinc-800 rounded-xl hover:bg-zinc-700 border border-zinc-700 text-sm">Card A</button><button onclick="triggerMemoryWin(2)" class="p-6 bg-zinc-800 rounded-xl hover:bg-zinc-700 border border-zinc-700 text-sm">Card B</button></div></div>`;
+      }
+      else if (gameType === 'snake') {
+        container.innerHTML = `<div class="text-center space-y-4"><h3 class="text-xl font-bold">Classic Snake</h3><p class="text-xs text-zinc-500">Control the terminal grid node feed loop parameters</p><button onclick="updateCoinsBalance(50); startArcadeGame('snake');" class="bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-bold py-3 px-6 rounded-xl text-xs transition shadow-md">Simulate Full Run (+50🪙)</button></div>`;
+      }
+    }
+
+    function checkMathAns(correctValue) {
+      const userVal = parseInt(document.getElementById('math-ans').value);
+      if (userVal === correctValue) { updateCoinsBalance(30); alert("Correct! +30 Coins loaded."); } 
+      else { alert("Incorrect calculation parameter."); }
+      startArcadeGame('math');
+    }
+
+    function checkGuessAns(targetValue) {
+      const userVal = parseInt(document.getElementById('guess-input').value);
+      if (userVal === targetValue) { updateCoinsBalance(20); alert("Perfect Prediction! +20 Coins added."); } 
+      else { alert(`Wrong! The target answer code sequence was ${targetValue}`); }
+      startArcadeGame('guesser');
+    }
+
+    function triggerMemoryWin(cardNum) {
+      updateCoinsBalance(40);
+      alert("Sequence Matched completely! +40 Coins added.");
+      startArcadeGame('memory');
     }
 
     setInterval(loadMessages, 2000);
